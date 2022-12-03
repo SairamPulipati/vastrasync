@@ -1,0 +1,38 @@
+page[size="A4"] {  
+    width: 21cm;
+    height: 29.7cm; 
+  }
+  .weddingStudio{
+    font-family: arial, sans-serif;
+    font-size:14px;
+    font-weight: bold;
+
+  }
+  .desc{
+    font-family: arial, sans-serif;
+    font-size:13px;
+    font-weight: normal;
+
+
+  }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    font-size:13px;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #dddddd;
+  }
+  .logo-style{
+    height:80px;
+    width:80px;
+    border-radius: 50%;
+  }

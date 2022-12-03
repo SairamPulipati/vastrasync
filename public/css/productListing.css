@@ -1,0 +1,42 @@
+
+.pos-container{
+ 
+    height:4vw;
+    background-color: #ffffff;
+}
+.billing-container{
+    background-color: whitesmoke;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top:50px;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size:13px;
+  }
+  
+  th {
+    background-color: #dddddd;
+  }
+
+  .table-icon{
+    height:28px;
+    width:28px;
+    text-align: center;
+    background-color:darkslateblue;
+    margin-left:5px;
+    display:inline-block;
+    border-radius: 2px;
+    
+    padding-top:1px;
+    opacity: 0.7;
+  }
+  .table-overflow{
+    overflow: scroll;
+  }
