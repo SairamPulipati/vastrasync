@@ -88,7 +88,7 @@
         
        <div class="d-flex justify-content-end">
                 <div class="p-2"></div>
-                @if($transcationDetails[0]->payment2 == null)
+                @if(floor(((int)$transcationDetails[0]->totalpurchase - $transcationDetails[0]->discount) - ((int)$transcationDetails[0]->partialpay + (int)$transcationDetails[0]->payment2)) != 0)
                 <div class="p-2">
                     <button class="btn btn-sm btn-info" onclick="paynow('{{$transcationid}}')">Pay</button>
                 </div>
@@ -125,7 +125,7 @@
                 </tr>
                 <tr>
                   <td>Final Payment:</td>
-                  <td><h5 id="payment2" value="" style="font-size:13px;"><span id="payment2s">{{$transcationDetails[0]->payment2 ?? 0}}</span></h5></td>
+                  <td><h5 id="payment2" value="" style="font-size:13px;"><span id="payment2s">{{$transcationDetails[0]->payment2}}</span></h5></td>
                 </tr>
                     <tr>
                   <td>Balance:</td>

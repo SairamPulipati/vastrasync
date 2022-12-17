@@ -362,9 +362,18 @@
                                     <div class="col-12 col-md-4 my-2">
                                         <label id="name" style="font-size:15px"><span style="color:red;">* </span>Branches:</label>
                                         <select type="text" name="branches[]" id="branches" placeholder="Enter the Slug" class="form-control" style="background-color:whitesmoke; font-size:15px">
-                                            @foreach($Branches as $branch)
-                                            <option value="{{$branch->id}}" style="font-size:13px">{{$branch->name}}</option>
-                                            @endforeach
+                                             @if(\Auth::user()->role == 1)
+                                                @foreach($Branches as $branch)
+                                                                                        
+                                                <option value="{{$branch->id}}" style="font-size:13px">{{$branch->name}}</option>
+                                                @endforeach
+                                                @else
+                                                @foreach($Branches as $branch)
+                                                @if($branch->id == \Auth::user()->branch)                              
+                                                <option value="{{$branch->id}}" style="font-size:13px">{{$branch->name}}</option>
+                                                @endif
+                                                @endforeach
+                                                @endif
                                         </select>
                                     </div>
                                         <div class="col-12 col-md-4 my-2">

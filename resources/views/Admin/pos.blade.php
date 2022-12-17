@@ -69,7 +69,7 @@
                                          
                        </div>
                        <div class="px-2">
-                            <input type="number"  required id="newCustomerPhone" placeholder="Enter the Phone Number" class="form-control" style="font-size:13px;">
+                            <input type="text"  required id="newCustomerPhone" placeholder="Enter the Phone Number" class="form-control" style="font-size:13px;">
                        </div>
                        <div class="px-2">
                             <p id="requiredPhone" class="required-class"></p>
@@ -228,14 +228,14 @@
                   
                 </tr>
                 <tr>
-                  <td>Advance:</td>
+                  <td>Advance or totalpay:</td>
                    <td>
                       <div class="d-flex flex-row">
                           <div class="p-2">
                               <input type="number" style="font-size:13px;" placeholder="Enter Partial Payment" class="form-control" name="partialpayment" id="partialpayment">
                           </div>
                           <div class="p-2">
-                              <button type="button" class="btn btn-primary" onclick="PartialPayment()" style="background-color: #2e2e2e; border-color:#2e2e2e; color:#ffffff;height:33.49px">Submit</button>
+                              <button type="button" class="btn btn-primary" onclick="PartialPayment()"  style="background-color: #2e2e2e; border-color:#2e2e2e; color:#ffffff;height:33.49px">Submit</button>
                           </div>
                       </div> 
                       </td>
@@ -327,9 +327,24 @@
             },
             dataType:'json',
             success : function(data) {
-              // debugger;
-              $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
+                $( "#billingTable" ).load(window.location.href + " #billingTable" );
+                $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
+                setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
+               
               
             // console.log(myarray)
             // var status = myarray.includes(data.id);
@@ -392,7 +407,17 @@
       var partialpayment = $('#partialpayment').val();
       var discount = $('#discount').val();
       var  grandtotal = document.getElementById('grandtotal').innerText;
-      if(customername != '' || customernumber != ''){
+      var finaltotaldata = document.getElementById('FinalTotal').innerText;
+       if (partialpayment == "" || partialpayment == null || customername == "" || customername == null || customernumber == "" || customernumber == null || isNaN(customernumber ) || customernumber.length >10 || customernumber.length < 10 ) {
+
+         alert("Please Enter Details Properly");
+    return false;
+      }
+      else{
+         if(partialpayment <= finaltotaldata || partialpayment > 0  )
+      {
+        if(customername != '' || customernumber != ''){
+
           if(grandtotal > 0){
                 $.ajax({
             url : 'purchaseproducts',
@@ -408,10 +433,14 @@
             },
             dataType:'json',
             success : function(data) {
-          
-               window.id = data
-              $('#printpdf').show();
-              $('#purchasebutton').hide();         
+                if(data == 0)
+                {
+                    alert('please enter valid price');
+                }else{
+                     window.id = data
+                      $('#printpdf').show();
+                      $('#purchasebutton').hide();
+                }  
             },
             error : function(request,error)
             {
@@ -420,14 +449,20 @@
         }); 
           } else{
               alert("Please Enter Details");
-          }
-         
-           
-          
+          } 
       }
+          else{
+               alert('Please Enter Customer Details');
+          }  
+      }
+
       else{
-           alert('Please Enter Customer Details');
+          alert('Please enter Total payable amount');
       }
+      }
+
+     
+      
 
      
   }
@@ -448,7 +483,21 @@
                $( "#billingTable" ).load(window.location.href + " #billingTable" );
                $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
                alert('price added')        
-            //   location.reload()
+        setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
             },
             error : function(request,error)
             {
@@ -470,7 +519,22 @@
                $( "#billingTable" ).load(window.location.href + " #billingTable" );
                $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
                
-               alert('price added')        
+               alert('price added')  
+               setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
             },
             error : function(request,error)
             {
@@ -491,7 +555,22 @@
                $( "#billingTable" ).load(window.location.href + " #billingTable" );
                $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
                
-               alert('Product Deleted')        
+               alert('Product Deleted')   
+               setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
             },
             error : function(request,error)
             {
@@ -536,23 +615,71 @@
   }
   function Discount()
   {
-      var discount = $('#discount').val();
       var total = document.getElementById('grandtotal').innerText;
-      var ChangeDiscount = 100 - discount;
-      var AfterDiscount = total - discount;
-      $( "#FinalTotal" ).empty();
-      $( "#FinalTotal" ).append(AfterDiscount);
+      var discount = $('#discount').val();
+       var t = parseInt(total);
+      var d = parseInt(discount);
+ 
+      if(t > d)
+      {
+        var AfterDiscount = t - d;
+        
+        $( "#FinalTotal" ).empty();
+          $( "#FinalTotal" ).append(AfterDiscount);
+
+      }
+      else{
+        alert("please enter proper discount value");
+      }
   }
   function PartialPayment()
   {
-    var finaltotaldata = document.getElementById('FinalTotal').innerText;   
-    var partialpayment = $('#partialpayment').val();
-    var Balance = finaltotaldata - partialpayment;
-    $( "#Balance" ).empty();
-    $( "#Balance" ).append(Balance);
+    var discount = $('#discount').val();
+    var total = document.getElementById('grandtotal').innerText;
+    var d = parseInt(discount);
+    var t = parseInt(total);
+    if(d == '' || d > 0 )
+    {
+     
+       var partialpayment = $('#partialpayment').val();
+       var parpay = parseInt(partialpayment);
+       var finaldata = document.getElementById('FinalTotal').innerText; 
+       var finalAmount = parseInt(finaldata);
+       var parpayment = parseInt(partialpayment);
+       if( parpayment == '' || parpayment <=0)
+       {
+            alert('Please Enter Valid Total payable Amount');
+       }
+       else{
+            if(finalAmount >= parpayment){
+           var Balance = finalAmount - parpayment;
+           $( "#Balance" ).empty();
+           $( "#Balance" ).append(Balance);
+       }
+       else{
+           alert('Please Enter Valid Total payable Amount');
+       }
+       } 
+    }
+    else{
+     if( parpayment == '' || parpayment <=0)
+       {
+           alert('Please Enter Valid Total payable Amount');
+       }
+       else{
+        if(finalAmount >= parpayment){
+        var Balance = finalAmount - parpayment;
+        $( "#Balance" ).empty();
+        $("#Balance" ).append(Balance);
+     }
+     else{
+      alert('Please Enter Valid Total payable Amount');
+     }
+       }
+    }
+    
   }
    function quantityadd(id){
-      
         var qunty = window.prompt("Add Quantity");
         if(qunty > 0){
        $.ajax({
@@ -566,12 +693,26 @@
           success : function(data) {
               $( "#billingTable" ).load(window.location.href + " #billingTable" );
              $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
+             setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
              // urlRefresh();
              // alert('price added')        
           },
           error : function(request,error)
           {
-
           }
         });
         }
@@ -590,6 +731,7 @@
               $( "#billingTable" ).load(window.location.href + " #billingTable" );
              $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
              location.reload();
+             
              // urlRefresh();
              // alert('price added')        
           },
@@ -601,7 +743,6 @@
    }
   function priceadd(id){
       var price = window.prompt("Add Price");
-      debugger;
       if(price > 0)
       {
           $.ajax({
@@ -616,6 +757,21 @@
                $( "#billingTable" ).load(window.location.href + " #billingTable" );
                $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
                alert('price added') 
+               setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
             //   var discount = $('#discount').val();
             //   console.log(discount);
             //   var total = document.getElementById('grandtotal').innerText;
@@ -635,7 +791,7 @@
         });
       }
       else{
-          alert("Please Enter Price");
+          alert("Please Enter valid Price");
       }
       
   }
@@ -656,6 +812,21 @@
              
               $( "#billingTable" ).load(window.location.href + " #billingTable" );
               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
+              setTimeout(function(){
+                    var total = document.getElementById('grandtotal').innerText;
+                    var discount = $('#discount').val();
+                    var t = parseInt(total);
+                    var d = parseInt(discount);
+                    var AfterDiscount = t - d;
+                    $( "#FinalTotal" ).empty();
+                    $( "#FinalTotal" ).append(AfterDiscount);
+                    var finaldata =document.getElementById('FinalTotal').innerText;
+                    var parpay = $('#partialpayment').val();
+                    var Balance = finaldata - parpay;
+                    $( "#Balance" ).empty();
+                    $( "#Balance" ).append(Balance);
+                    
+                }, 1000);
               
             },
             error : function(request,error)

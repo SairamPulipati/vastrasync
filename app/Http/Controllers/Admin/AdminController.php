@@ -124,6 +124,13 @@ class AdminController extends Controller
    public function purchaseproducts(Request $request)
     {
         $ProductsInfo = Posproduct::where('tempid', \Session::getId())->get();
+        foreach($ProductsInfo as $ProductsInfos)
+        {
+            if($ProductsInfos->price * $ProductsInfos->quantity == 0)
+            {
+                return 0;
+            }
+        }
         $total = $ProductsInfo->map(function ($product, $key) {
             return $product->price * $product->quantity;
         })->sum();
@@ -491,7 +498,12 @@ class AdminController extends Controller
     }
     public function downloadallbarcodes()
     {
-        $Barcodeinfo = \DB::table('products')->where('type', 'readymade')->get();
+        if(Auth::user()->role == 1)
+        {
+            $Barcodeinfo = \DB::table('products')->where('type', 'readymade')->get();
+        }else{
+            $Barcodeinfo = \DB::table('products')->where('branch', Auth::user()->branch)->where('type', 'readymade')->get();
+        }
         return view('Product.Barcodes', compact('Barcodeinfo'));
         $pdf = PDF::loadView('Product.Barcodes', compact('Barcodeinfo')); 
             return $pdf->download('Barcode.pdf');
