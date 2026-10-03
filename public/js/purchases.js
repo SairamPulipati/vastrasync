@@ -1,12 +1,29 @@
 function openNav() {
-    document.getElementById("mySidebar").style.width = "245px";
-    document.getElementById("main").style.marginLeft = "250px";
-    
-  }
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-  }
+    var sidebar = document.getElementById("mySidebar");
+    var main = document.getElementById("main");
+    if (!sidebar) return;
+
+    var currentWidth = sidebar.style.width || window.getComputedStyle(sidebar).width;
+    if (currentWidth === "0px" || sidebar.classList.contains("sidebar-collapsed")) {
+        sidebar.style.width = "260px";
+        if (main) main.style.marginLeft = "260px";
+        sidebar.classList.remove("sidebar-collapsed");
+    } else {
+        sidebar.style.width = "0px";
+        if (main) main.style.marginLeft = "0px";
+        sidebar.classList.add("sidebar-collapsed");
+    }
+}
+
+function closeNav() {
+    var sidebar = document.getElementById("mySidebar");
+    var main = document.getElementById("main");
+    if (sidebar) {
+        sidebar.style.width = "0px";
+        sidebar.classList.add("sidebar-collapsed");
+    }
+    if (main) main.style.marginLeft = "0px";
+}
  
   let requiredEl = document.getElementById("requiredName");
   let newCustomerNameEl=document.getElementById("newCustomerName");

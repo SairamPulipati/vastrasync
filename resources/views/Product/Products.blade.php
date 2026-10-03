@@ -36,15 +36,20 @@
         {{ session()->get('message') }}
     </div>
 @endif
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <h5>Products</h5>
-                </div>
-                
-                <div class="col-12 col-md-6" style="text-align: right;">
-                    <a href="{{route('downloadallbarcodes')}}" class="btn btn-outline-info" > <i class="fa-thin fa-plus mr-2"></i> Barcode Download</a>
-                    <button type="button" class="btn btn-outline-info" uk-toggle="target: #offcanvas-flip"> <i class="fa-thin fa-plus mr-2"></i> Add New Product</button>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+            <div>
+                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Product Catalog &amp; Inventory</h4>
+                <p class="text-muted mb-0" style="font-size: 13.5px;">Manage ready-made studio products, frames, barcode labels, and pricing.</p>
+            </div>
+            <div class="mt-3 mt-md-0 d-flex" style="gap: 10px;">
+                <a href="{{route('downloadallbarcodes')}}" class="btn btn-outline-primary" style="border-radius: 8px; font-weight: 600; font-size: 13px; text-decoration: none !important;">
+                    <i class="fa-solid fa-download mr-1"></i> Barcode Download
+                </a>
+                <button type="button" class="btn-modern-primary" uk-toggle="target: #offcanvas-flip">
+                    <i class="fa-solid fa-plus mr-1"></i> Add New Product
+                </button>
+            </div>
+        </div>
 
                     <form method="post" action="{{route('AddNewProduct')}}"  enctype="multipart/form-data">
                     @csrf
@@ -879,7 +884,9 @@
             </div>
         </div>
         
-        <table id="grandtotal">
+        <div class="content-box p-4 mt-3">
+            <div class="table-responsive">
+                <table id="grandtotal" class="table">
             <thead>
             <tr>
                 <th></th>
@@ -900,7 +907,16 @@
             <tr>
                 <td>{{$product->id}}</td>
                  
-                <td onclick="window.location='{{route('productview',$product->id )}}'"> <img style="height:50px;width:40px;  padding:3px;" src="{{asset('images/products/logos/' . $product->image ?? '')}}" />{{$product->name}}</td>
+                <td onclick="window.location='{{route('productview',$product->id )}}'" style="cursor: pointer;">
+                    <div class="d-flex align-items-center" style="gap: 10px;">
+                        @if(!empty($product->image) && file_exists(public_path('images/products/logos/' . $product->image)))
+                            <img style="height:44px; width:44px; object-fit:cover; border-radius:8px; border:1px solid #e2e8f0;" src="{{ asset('images/products/logos/' . $product->image) }}" alt="{{ $product->name }}" />
+                        @else
+                            <img style="height:44px; width:44px; object-fit:cover; border-radius:8px; border:1px solid #e2e8f0;" src="{{ asset('images/product-placeholder.svg') }}" alt="{{ $product->name }}" />
+                        @endif
+                        <span class="font-weight-bold" style="color: #0f172a;">{{ $product->name }}</span>
+                    </div>
+                </td>
                  <?php 
                         $categorydetails = \DB::table('categories')->where('id', $product->category)->select('id', 'name')->first();
                      ?>
@@ -956,6 +972,8 @@
             @endforeach
             </tbody>
         </table>
+            </div>
+        </div>
        
        
     </div>

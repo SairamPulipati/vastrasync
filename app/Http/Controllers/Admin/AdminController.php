@@ -30,10 +30,12 @@ class AdminController extends Controller
     }
     public function Dashboard()
     {
-        // if(Auth::user()->role == 1)
-        // {
-            return view('Admin.profileregister');
-        // }
+        return $this->dashboardview();
+    }
+
+    public function userprofile()
+    {
+        return view('Admin.profileregister');
     }
     public function RegisterStaff()
     {

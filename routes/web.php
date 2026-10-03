@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard & Overview
     Route::get('/AdminDashboard', [AdminController::class, 'Dashboard'])->name('Dashboard');
     Route::get('/dashboardview', [AdminController::class, 'dashboardview'])->name('dashboardview');
+    Route::get('/profile', [AdminController::class, 'userprofile'])->name('userprofile');
 
     // Staff & Branch Management (Warehouse)
     Route::get('/RegisterStaff', [AdminController::class, 'RegisterStaff'])->name('RegisterStaff');

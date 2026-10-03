@@ -1,7 +1,7 @@
 <div class="top-navbar">
     <div class="d-flex align-items-center">
         <button class="brand-toggle-btn mr-3" onclick="openNav()" title="Toggle Sidebar">
-            <i class="fa-solid fa-bars mr-1"></i> Menu
+            <i class="fa-solid fa-bars"></i>
         </button>
         <div>
             <h5 class="mb-0 font-weight-bold" style="color: #1e1b4b; font-size: 16px; letter-spacing: -0.3px;">

@@ -36,6 +36,18 @@ body {
     padding: 0;
 }
 
+/* Universal Text Decoration None Rule */
+a, a:hover, a:focus, a:active,
+.btn, .btn:hover, .btn:focus, .btn:active,
+.nav-link, .nav-link:hover,
+.sidebar-nav-item, .sidebar-nav-item:hover,
+.sub-item, .sub-item:hover,
+.table-icon, .table-icon:hover,
+.table-icon a, .table-icon a:hover,
+button, button:hover, button:focus {
+    text-decoration: none !important;
+}
+
 /* Sidebar Modern Overhaul */
 .sidebar {
     height: 100%;

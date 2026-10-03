@@ -74,7 +74,7 @@
         <div class="top-navbar">
             <div class="d-flex align-items-center">
                 <button class="brand-toggle-btn mr-3" onclick="openNav()" title="Toggle Sidebar">
-                    <i class="fa-solid fa-bars mr-1"></i> Menu
+                    <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="pos-header-badge">
                     <i class="fa-solid fa-cash-register"></i> POS TERMINAL

@@ -26,19 +26,8 @@
 
 <body>
   @include('Admin.sidebarmenu')
-    <div id="main" style="margin-left:250px;">
-        <div class="d-flex flex-row justify-content-between">
-            <div>
-                <button class="openbtn" onclick="openNav()">☰ MWS</button>
-            </div>
-        <div>
-             <img style="height:40px;width:40px; border-radius:50%;" src="{{ asset('images/avatar-default.svg') }}" />
-
-        </div>
-
-
-        </div>
-        <hr clas="shadow">
+    <div id="main">
+        @include('Admin.topnavbar')
 
         <div class="container-fluid">
             <div class="row">
