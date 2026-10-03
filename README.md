@@ -291,5 +291,8 @@ billing/
 
 ---
 
-## 📄 License
-This project is open-source and licensed under the [MIT License](LICENSE).
+## 📄 License & Intellectual Property
+
+Copyright © 2026 **[Sairam Pulipati](https://github.com/SairamPulipati)**. All Rights Reserved.
+
+This project is proprietary and licensed for evaluation, peer review, and employer assessment purposes only. Unauthorized reproduction, redistribution, or commercial use without prior written consent is strictly prohibited. See the [LICENSE](LICENSE) file for full details.
