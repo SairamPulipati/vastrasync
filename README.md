@@ -5,7 +5,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-4.5-7952CC?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Sairam%20Pulipati-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pulipati-sairam-b14820169/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg?style=for-the-badge)](LICENSE)
 
 ---
 
