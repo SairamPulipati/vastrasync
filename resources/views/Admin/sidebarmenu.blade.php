@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -7,7 +8,6 @@
         <a href="{{ route('Dashboard') }}" class="d-flex align-items-center text-decoration-none">
             <img src="{{ asset('images/logo.svg') }}" alt="Wedding Studio" style="max-height: 42px; width: auto;" />
         </a>
-        <a href="javascript:void(0)" class="closebtn d-md-none" onclick="closeNav()">&times;</a>
     </div>
 
     <!-- Navigation Items -->

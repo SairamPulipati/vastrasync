@@ -42,7 +42,7 @@
             <div class="user-avatar" title="{{ Auth::user()->email ?? '' }}">
                 {{ strtoupper(substr(Auth::user()->name ?? 'U', 0, 1)) }}
             </div>
-            <a href="{{ route('logout') }}" class="btn btn-sm btn-outline-danger ml-2" title="Sign Out" style="border-radius: 8px; padding: 6px 10px;">
+            <a href="{{ route('logout') }}" class="btn-navbar-logout ml-2" title="Sign Out">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </a>
         </div>
