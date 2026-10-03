@@ -187,8 +187,8 @@ erDiagram
 
 #### 1. Clone the Repository
 ```bash
-git clone https://github.com/SairamPulipati/weddingstudio.git
-cd weddingstudio
+git clone https://github.com/SairamPulipati/vastrasync.git
+cd vastrasync
 ```
 
 #### 2. Install PHP Dependencies
