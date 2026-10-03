@@ -1,28 +1,51 @@
-function openNav() {
+function toggleNav() {
     var sidebar = document.getElementById("mySidebar");
     var main = document.getElementById("main");
+    var overlay = document.getElementById("sidebarOverlay");
     if (!sidebar) return;
 
-    var currentWidth = sidebar.style.width || window.getComputedStyle(sidebar).width;
-    if (currentWidth === "0px" || sidebar.classList.contains("sidebar-collapsed")) {
-        sidebar.style.width = "260px";
-        if (main) main.style.marginLeft = "260px";
-        sidebar.classList.remove("sidebar-collapsed");
+    sidebar.style.removeProperty("width");
+    if (main) main.style.removeProperty("margin-left");
+
+    var isMobile = window.innerWidth < 992;
+    if (isMobile) {
+        var isOpen = sidebar.classList.toggle("sidebar-open");
+        if (overlay) {
+            if (isOpen) {
+                overlay.classList.add("active");
+            } else {
+                overlay.classList.remove("active");
+            }
+        }
     } else {
-        sidebar.style.width = "0px";
-        if (main) main.style.marginLeft = "0px";
-        sidebar.classList.add("sidebar-collapsed");
+        sidebar.classList.toggle("sidebar-closed");
+        if (main) {
+            main.classList.toggle("main-expanded");
+        }
     }
+}
+
+function openNav() {
+    toggleNav();
 }
 
 function closeNav() {
     var sidebar = document.getElementById("mySidebar");
     var main = document.getElementById("main");
-    if (sidebar) {
-        sidebar.style.width = "0px";
-        sidebar.classList.add("sidebar-collapsed");
+    var overlay = document.getElementById("sidebarOverlay");
+    if (!sidebar) return;
+
+    sidebar.style.removeProperty("width");
+    if (main) main.style.removeProperty("margin-left");
+
+    var isMobile = window.innerWidth < 992;
+    if (isMobile) {
+        sidebar.classList.remove("sidebar-open");
+        if (overlay) overlay.classList.remove("active");
+    } else {
+        sidebar.classList.add("sidebar-closed");
+        if (main) main.classList.add("main-expanded");
     }
-    if (main) main.style.marginLeft = "0px";
 }
   let createButtonEl=document.getElementById("createButton");
   let requiredEl = document.getElementById("requiredName");

@@ -1,3 +1,7 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <div id="mySidebar" class="sidebar">
     <div class="sidebar-brand">
         <a href="{{ route('Dashboard') }}" class="d-flex align-items-center text-decoration-none">
@@ -84,21 +88,62 @@
     </div>
 </div>
 
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeNav()"></div>
+
 <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "260px";
-        if (window.innerWidth > 768) {
-            document.getElementById("main").style.marginLeft = "260px";
+    function toggleNav() {
+        var sidebar = document.getElementById("mySidebar");
+        var main = document.getElementById("main");
+        var overlay = document.getElementById("sidebarOverlay");
+        if (!sidebar) return;
+
+        sidebar.style.removeProperty("width");
+        if (main) main.style.removeProperty("margin-left");
+
+        var isMobile = window.innerWidth < 992;
+        if (isMobile) {
+            var isOpen = sidebar.classList.toggle("sidebar-open");
+            if (overlay) {
+                if (isOpen) {
+                    overlay.classList.add("active");
+                } else {
+                    overlay.classList.remove("active");
+                }
+            }
+        } else {
+            sidebar.classList.toggle("sidebar-closed");
+            if (main) {
+                main.classList.toggle("main-expanded");
+            }
         }
     }
 
+    function openNav() {
+        toggleNav();
+    }
+
     function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+        var sidebar = document.getElementById("mySidebar");
+        var main = document.getElementById("main");
+        var overlay = document.getElementById("sidebarOverlay");
+        if (!sidebar) return;
+
+        sidebar.style.removeProperty("width");
+        if (main) main.style.removeProperty("margin-left");
+
+        var isMobile = window.innerWidth < 992;
+        if (isMobile) {
+            sidebar.classList.remove("sidebar-open");
+            if (overlay) overlay.classList.remove("active");
+        } else {
+            sidebar.classList.add("sidebar-closed");
+            if (main) main.classList.add("main-expanded");
+        }
     }
 
     function toggleSubmenu(id) {
         var menu = document.getElementById(id);
+        if (!menu) return;
         if (menu.style.display === "none" || menu.style.display === "") {
             menu.style.display = "block";
         } else {
