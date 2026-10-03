@@ -17,6 +17,22 @@ Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/puli
 
 ---
 
+## 📸 Application Showcase
+
+### 1. Modern Luxury Authentication & Role Access
+![Login Screen](screenshots/01-login-screen.png)
+
+### 2. Studio Overview & Financial Analytics Dashboard
+![Dashboard Overview](screenshots/02-dashboard-overview.png)
+
+### 3. Real-Time POS Billing & Barcode Terminal
+![POS Billing Terminal](screenshots/03-pos-billing-terminal.png)
+
+### 4. Multi-Branch Staff Management & Role-Based Access Control (RBAC)
+![Staff Management & RBAC](screenshots/04-staff-management-rbac.png)
+
+---
+
 ## ✨ Key Features & Capabilities
 
 ### 🛒 1. Point of Sale (POS) & Billing Terminal
