@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
  <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
- <title>Men's Wedding Studio</title>
+ <title>VastraSync ERP</title>
     <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>
 <body>

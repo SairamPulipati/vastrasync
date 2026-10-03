@@ -7,7 +7,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link href="{{asset('css/printingbill.css')}}" rel="stylesheet">
      <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
- <title>Men's Wedding Studio</title>
+ <title>VastraSync ERP</title>
     <style>
         @media print
 {    
@@ -25,7 +25,7 @@
           <!-- <h text-align="center">Partial pay</h> -->
             <div class="row">
                 <div class="col-6 ">
-                    <strong class="weddingStudio" style="font-size:25px; color:#af0000">Men's Wedding Studio</strong>
+                    <strong class="weddingStudio" style="font-size:25px; color:#af0000">VastraSync ERP</strong>
                     <p class="desc"><strong>Address :</strong><br>{{$Branchdetails->address}}<br>
                      <strong> Phone Number: </strong>{{$Branchdetails->mobile}} <br>
                       <strong> GST Number :</strong>36ALQPT0938F1ZP.

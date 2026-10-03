@@ -11,7 +11,7 @@
     <link href="{{asset('css/pos.css')}}" rel="stylesheet">
     <script src="{{asset('js/pos.js')}}"></script>
  <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
-<title>Men's Wedding Studio</title>
+<title>VastraSync ERP</title>
 </head>
   <body>
     <div class=" p-3">

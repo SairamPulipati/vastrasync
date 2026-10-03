@@ -223,7 +223,7 @@
                     <label class="font-weight-bold text-dark small mb-2">Email Address</label>
                     <div class="input-icon-wrap">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" name="email" id="form2Example17" class="form-control" placeholder="name@weddingstudio.com" value="{{ old('email', 'admin@weddingstudio.com') }}" required autofocus />
+                        <input type="email" name="email" id="form2Example17" class="form-control" placeholder="name@vastrasync.com" value="{{ old('email', 'admin@vastrasync.com') }}" required autofocus />
                     </div>
 
                     <label class="font-weight-bold text-dark small mb-2">Password</label>
@@ -247,13 +247,13 @@
                 <!-- Demo Account Quick Fill -->
                 <div class="mt-4 pt-3 border-top">
                     <p class="small text-muted mb-2 font-weight-bold">Demo Quick Access:</p>
-                    <span class="demo-badge" onclick="fillCreds('admin@weddingstudio.com', 'password123')">
+                    <span class="demo-badge" onclick="fillCreds('admin@vastrasync.com', 'password123')">
                         <i class="fa-solid fa-user-shield text-primary mr-1"></i> Admin
                     </span>
-                    <span class="demo-badge" onclick="fillCreds('manager@weddingstudio.com', 'password123')">
+                    <span class="demo-badge" onclick="fillCreds('manager@vastrasync.com', 'password123')">
                         <i class="fa-solid fa-briefcase text-success mr-1"></i> Branch Manager
                     </span>
-                    <span class="demo-badge" onclick="fillCreds('sales@weddingstudio.com', 'password123')">
+                    <span class="demo-badge" onclick="fillCreds('sales@vastrasync.com', 'password123')">
                         <i class="fa-solid fa-cash-register text-info mr-1"></i> Sales Executive
                     </span>
                 </div>

@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
  <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
-<title>Men's Wedding Studio</title>
+<title>VastraSync ERP</title>
 
     <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>

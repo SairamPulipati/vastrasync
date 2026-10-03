@@ -22,16 +22,16 @@ Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/puli
 ## 📸 Application Showcase
 
 ### 1. Modern Luxury Authentication & Role Access
-![Login Screen](screenshots/01-login-screen.png)
+![Login Screen](screenshots/01-login-screen.png?raw=true&v=2)
 
 ### 2. Showroom Overview & Financial Analytics Dashboard
-![Dashboard Overview](screenshots/02-dashboard-overview.png)
+![Dashboard Overview](screenshots/02-dashboard-overview.png?raw=true&v=2)
 
 ### 3. High-Speed POS Billing & Barcode Terminal
-![POS Billing Terminal](screenshots/03-pos-billing-terminal.png)
+![POS Billing Terminal](screenshots/03-pos-billing-terminal.png?raw=true&v=2)
 
 ### 4. Multi-Branch Staff Management & Role-Based Access Control (RBAC)
-![Staff Management & RBAC](screenshots/04-staff-management-rbac.png)
+![Staff Management & RBAC](screenshots/04-staff-management-rbac.png?raw=true&v=2)
 
 ---
 
@@ -241,9 +241,9 @@ The database seeder provisions initial test users across all system roles:
 
 | Role | Name | Email | Password | Assigned Branch |
 | :--- | :--- | :--- | :--- | :--- |
-| **Super Admin** | Sairam Pulipati | `admin@weddingstudio.com` | `password123` | Hyderabad Flagship HQ |
-| **Branch Manager** | Kiran Kumar | `manager@weddingstudio.com` | `password123` | Vijayawada Branch |
-| **Sales Executive** | Ramesh Naidu | `sales@weddingstudio.com` | `password123` | Hyderabad Flagship HQ |
+| **Super Admin** | Sairam Pulipati | `admin@vastrasync.com` | `password123` | Hyderabad Flagship HQ |
+| **Branch Manager** | Kiran Kumar | `manager@vastrasync.com` | `password123` | Vijayawada Branch |
+| **Sales Executive** | Ramesh Naidu | `sales@vastrasync.com` | `password123` | Hyderabad Flagship HQ |
 
 ---
 

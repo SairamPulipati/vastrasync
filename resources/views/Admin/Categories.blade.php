@@ -18,7 +18,7 @@
   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
  <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
-<title>Men's Wedding Studio</title>
+<title>VastraSync ERP</title>
 
     <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>

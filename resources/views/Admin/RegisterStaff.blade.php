@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Management | Men's Wedding Studio</title>
+    <title>Staff Management | VastraSync ERP</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     
     <!-- Fonts & CSS Libraries -->

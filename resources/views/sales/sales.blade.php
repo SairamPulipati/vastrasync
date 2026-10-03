@@ -17,7 +17,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
  <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
- <title>Men's Wedding Studio</title>
+ <title>VastraSync ERP</title>
     <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>
 <body>
