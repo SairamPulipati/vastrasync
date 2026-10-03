@@ -10,13 +10,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="{{asset('js/sales.js')}}"></script>
-    <script src="https://kit.fontawesome.com/6b781c3f04.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
- <link rel="icon" type="image/x-icon" href="https://ssr.piniteinfosol.tk/saloon2/wp-content/uploads/2022/10/wedding__1_-removebg-preview-1.png">
+ <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
  <title>Men's Wedding Studio</title>
+    <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>
 <body>
     @include('Admin.sidebarmenu')
@@ -163,7 +164,7 @@
                 <!--<select>-->
                 <!--    <option>en</option>-->
                 <!--</select>-->
-                <img style="height:40px;width:40px; border-radius:50%;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />
+                <img style="height:40px;width:40px; border-radius:50%;" src="{{ asset('images/avatar-default.svg') }}" />
             </div>
         </div>
         <hr clas="shadow">
@@ -204,7 +205,7 @@
             <tr>
                 <td>1</td>
                 <td> 16-10-2022 08:21 pm</td>
-                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>
+                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="{{ asset('images/avatar-default.svg') }}" />Dach-Hintz</td>
                
                 <td>
                      ₹978.00
@@ -220,7 +221,7 @@
             <tr>
                 <td>2</td>
                 <td> 16-10-2022 08:21 pm</td>
-                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>
+                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="{{ asset('images/avatar-default.svg') }}" />Dach-Hintz</td>
                
                 <td>
                      ₹978.00
@@ -236,7 +237,7 @@
             <tr>
                 <td>3</td>
                 <td> 16-10-2022 08:21 pm</td>
-                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>
+                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="{{ asset('images/avatar-default.svg') }}" />Dach-Hintz</td>
                
                 <td>
                      ₹978.00
@@ -252,7 +253,7 @@
             <tr>
                 <td>4</td>
                 <td> 16-10-2022 08:21 pm</td>
-                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>
+                <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="{{ asset('images/avatar-default.svg') }}" />Dach-Hintz</td>
                
                 <td>
                      ₹978.00

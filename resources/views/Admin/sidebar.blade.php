@@ -1,705 +1,204 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.t1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link href="{{asset('css/siderbar.css')}}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="{{asset('js/sidebar.js')}}"></script>
-    <script src="https://kit.fontawesome.com/6b781c3f04.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Dashboard | Men's Wedding Studio</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
 
- 
-         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-<script src="https://cdn.datatables.net/datetime/1.2.0/js/dataTables.dateTime.min.js"></script>
- <link rel="icon" type="image/x-icon" href="https://ssr.piniteinfosol.tk/saloon2/wp-content/uploads/2022/10/wedding__1_-removebg-preview-1.png">
-  <title>Men's Wedding Studio</title>
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 </head>
-
 <body>
-     @include('Admin.sidebarmenu')
-    <div id="main" style="margin-left:250px;">
-        <div class="d-flex flex-row justify-content-between">
+    @include('Admin.sidebarmenu')
+
+    <div id="main">
+        @include('Admin.topnavbar')
+
+        <!-- Welcome Banner -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <button class="openbtn" onclick="openNav()">☰ MWS</button>
+                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Studio Overview</h4>
+                <p class="text-muted mb-0" style="font-size: 13.5px;">Live operations, sales metrics, and recent billing activity.</p>
             </div>
-            <div>
-                <!--<svg xmlns="http://www.w3.org/2000/svg" data-toggle="modal" data-target=".bd-example-modal-sm" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-dotted mr-2" style="color:darkslateblue;" viewBox="0 0 16 16">-->
-                <!--    <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />-->
-                <!--</svg>-->
-                <!--<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->
-                <!--    <div class="modal-dialog modal-sm">-->
-                <!--        <div class="modal-content">-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Staff Members</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-plus m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />-->
-                <!--                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Customers</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-file-earmark-person-fill m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Supplier</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-bag-plus-fill m-2" viewBox="0 0 16 16">-->
-                <!--                    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zM8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5V8z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Brand</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-hr m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M12 3H4a1 1 0 0 0-1 1v2.5H2V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2.5h-1V4a1 1 0 0 0-1-1zM2 9.5h1V12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9.5h1V12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5zm-1.5-2a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Category</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <i class="fa-brands fa-product-hunt m-2"></i>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Product</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-tags m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z" />-->
-                <!--                    <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Sales</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-handbag m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Purchase</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-window m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M2.5 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm1 .5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />-->
-                <!--                    <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm13 2v2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zM2 14a1 1 0 0 1-1-1V6h14v7a1 1 0 0 1-1 1H2z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Expense Category</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-explicit m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M6.826 10.88H10.5V12h-5V4.002h5v1.12H6.826V7.4h3.457v1.073H6.826v2.408Z" />-->
-                <!--                    <path d="M2.5 0A2.5 2.5 0 0 0 0 2.5v11A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-11A2.5 2.5 0 0 0 13.5 0h-11ZM1 2.5A1.5 1.5 0 0 1 2.5 1h11A1.5 1.5 0 0 1 15 2.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 13.5v-11Z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Expenses</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-currency-rupee m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Currency</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cash-stack m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />-->
-                <!--                    <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Warehouse</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-
-                <!--                <i class="fa-solid fa-building-un m-2" style="font-size:18px;"></i>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Unit</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-translate m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z" />-->
-                <!--                    <path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Language</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Role</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-calendar2-plus m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />-->
-                <!--                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM8 8a.5.5 0 0 1 .5.5V10H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V11H6a.5.5 0 0 1 0-1h1.5V8.5A.5.5 0 0 1 8 8z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:15px;">Add Tax</p>-->
-                <!--            </div>-->
-                <!--            <div class="d-flex flex-row ml-5">-->
-                <!--                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-wallet2 m-2" viewBox="0 0 16 16">-->
-                <!--                    <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />-->
-                <!--                </svg>-->
-                <!--                <p class="m-2" style="font-size:14px;">Add Payment Mode</p>-->
-                <!--            </div>-->
-                <!--        </div>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<select>-->
-                <!--    <option>Electronifly</option>-->
-                <!--</select>-->
-                <!--<select>-->
-                <!--    <option>en</option>-->
-                <!--</select>-->
-                <img style="height:40px;width:40px; border-radius:50%;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />
+            <div class="mt-3 mt-md-0 d-flex" style="gap: 10px;">
+                <a href="{{ route('pos') }}" class="btn-modern-primary">
+                    <i class="fa-solid fa-cash-register"></i> Open POS Terminal
+                </a>
             </div>
-
         </div>
-        <hr>
-        <h3>Dashboard</h3>
-        <div class="bg-container">
-            <!--<div class="d-flex flex-row mt-3 times">-->
 
-            <!--    <label style="font-size:15px;">Start Time</label>-->
-            <!--    <input type="date" id="startTime" name="startTime">-->
-            <!--    <p class="ml-2 " style="font-size:15px;">End Time</p>-->
-            <!--    <input type="date" id="startTime" name="startTime">-->
-
-
-            <!--</div>-->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
-
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">₹{{$DailyAmount}}</h5>
-                                    <p class="sales ml-5">Today Sales</p>
-                                </div>
-                            </div> 
-                </div>
+        <!-- 6 Metrics Cards Grid -->
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-purple">
+                        <i class="fa-solid fa-chart-line"></i>
                     </div>
-                     <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
-
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">{{$product}}</h5>
-                                    <p class="sales ml-5">Total Products</p>
-                                </div>
-                            </div> 
-                </div>
-                    </div>
-                     <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                             <!--<div class="d-flex justify-content-center">-->
-                             <!--    <div class="p-2">-->
-                             <!--        <h5 class="amount"></h5>-->
-                             <!--    </div>-->
-                             <!--    <div class="p-2">-->
-                             <!--        <p class="sales">Customers</p>-->
-                             <!--    </div>-->
-                             <!--</div>-->
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
-
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">{{$customerlist}}</h5></h5>
-                                    <p class="sales ml-5">Customers</p>
-                                </div>
-                            </div> 
-                </div>
+                    <div class="stat-card-info">
+                        <h3>₹{{ number_format($DailyAmount ?? 0, 2) }}</h3>
+                        <p>Today's Net Sales</p>
                     </div>
                 </div>
-                <div class="row">
-                     <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
+            </div>
 
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">₹{{$MonthAmount}}</h5>
-                                    <p class="sales ml-5">Monthly Sales</p>
-                                </div>
-                            </div> 
-                </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-emerald">
+                        <i class="fa-solid fa-calendar-days"></i>
                     </div>
-                     <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
-
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">₹{{$partialamount}}</h5>
-                                    <p class="sales ml-5">Partial payment recived today</p>
-                                </div>
-                            </div> 
-                </div>
-                    </div>
-                     <div class="col-lg-4 col-md-4 col-12">
-                         <div class="total-sales">
-                      <div class="d-flex flex-row">
-                                <div class="icon-div">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" style="color:#ffffff" fill="currentColor" class="bi bi-graph-up-arrow mt-3" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z" />
-                                    </svg>
-
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <h5 class="amount">₹{{$RecivedAmount}}</h5>
-                                    <p class="sales ml-5">Today Recived Amount</p>
-                                </div>
-                            </div> 
-                </div>
+                    <div class="stat-card-info">
+                        <h3>₹{{ number_format($MonthAmount ?? 0, 2) }}</h3>
+                        <p>Monthly Sales Revenue</p>
                     </div>
                 </div>
-           
-         <div class="my-2"></div>
-         
-   <table class="mt-3 salesTabel1" id="salesTable">
-                                 <thead>
-                <tr>
-               <th>No</th>
-                <th>Sales Date</th>
-                <th>Transaction Id</th>
-                <th>Customer Name</th>
-                <th>Price</th>
-               <th>Items</th>
-                <th>Details</th>
-            </tr>
-            </thead>
-            <tbody>
-             <?php  $i =1; ?>
-             @foreach($Sales as $sale)
-             <tr>
-                <td>{{$i}}</td>
-                <td>{{$sale->created_at}}</td>
-                <td>{{$sale->transcationid}}</td>
-                <td> {{$sale->customerdetails->name ?? ''}}</td>
-               <?php $Discount = 100 - $sale->discount; ?>
-                <td>
-                   {{$sale->totalpurchase}}
-                </td>
-                <td>{{count($sale->purchasedetails)}}</td>
-                <td>
-                    <a href="{{route('singletranscitiondetails', $sale->transcationid)}}">
-                    <div class="table-icon " data-toggle="modal">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="color:#2e2e2e;" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-</svg>
-                        <!--<i class="bi bi-eye-fill mt-2" style="color:#ffffff;"></i>-->
-                        <!--<i class="fa-sharp fa-regular fa-eye mt-2" style="color:#ffffff; font-size:smaller;"></i>-->
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-amber">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
                     </div>
-                </td>
-            </tr>
-             <?php $i++; ?>
-             @endforeach
-            </tbody>
-             </table>
-             
-            <!--<div class="container">-->
-            <!--    <div class="row">-->
-            <!--        <div class="col-12 col-md-3">-->
-                        
-            <!--        </div>-->
-            <!--    </div>-->
+                    <div class="stat-card-info">
+                        <h3>₹{{ number_format($RecivedAmount ?? 0, 2) }}</h3>
+                        <p>Today's Received Cash</p>
+                    </div>
+                </div>
+            </div>
 
-            <!--</div>-->
-            <!--<div class="total-sales ">-->
-            <!--    <div class="d-flex flex-row justify-content-between">-->
-            <!--        <div>-->
-            <!--            <h6 class="sales1">-->
-            <!--                Recent Stock History-->
-            <!--            </h6>-->
-            <!--        </div>-->
-            <!--        <div class="d-flex flex-row">-->
-            <!--            <p class="mr-3 sales1 tablinks" onclick="openCity(event, 'salesTable')"> Sales</p>-->
-            <!--            <p class="ml-3 sales1 tablinks" onclick="openCity(event, 'purchasesTable')"> Purchases</p>-->
-                       
-            <!--        </div>-->
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-sky">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>{{ $product ?? 0 }}</h3>
+                        <p>Active Studio Outfits & Items</p>
+                    </div>
+                </div>
+            </div>
 
-            <!--    </div>-->
-            <!--    <hr>-->
-            <!--    <div class="container">-->
-            <!--        <div class="row">-->
-            <!--            <div class="col-12 col-md-3">-->
-            <!--                <div class="total-sales1">-->
-            <!--                    <p class="sales">Total Sale Items</p>-->
-            <!--                    <h4>378</h4>-->
-            <!--                </div>-->
-                           
-            <!--                <div style="background-color:#f9d8d6;" class="total-sales1 mt-5">-->
-            <!--                    <p class="sales">Total Purchase Items-->
-            <!--                    </p>-->
-            <!--                    <h4>243</h4>-->
-            <!--                </div>-->
-                           
-            <!--            </div>-->
-            <!--            <div class="col-12 col-md-9 table-overflow">-->
-                         
-            <!--                <table class="mt-3 salesTabel1" id="purchasesTable">-->
-            <!--                    <tr>-->
-            <!--                        <th>No</th>-->
-            <!--                        <th>Date</th>-->
-            <!--                        <th>Supplier Name</th>-->
-            <!--                        <th>price</th>-->
-            <!--                        <th>Item</th>-->
-            <!--                        <th>Action</th>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td> 1</td>-->
-            <!--                        <td> 16-10-2022 08:21 pm</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-            <!--                        <td>-->
-            <!--                             ₹978.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                   
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td>2 </td>-->
-                                    
-            <!--                        <td> 16-10-2022 08:21 pm</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-                    
-            <!--                        <td>-->
-            <!--                             ₹897,444.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                  
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-                    
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td> 3</td>-->
-                                
-            <!--                        <td> 16-10-2022 08:21 pm</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-                                   
-            <!--                        <td>-->
-            <!--                             ₹978.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td> 4</td>-->
-                                 
-            <!--                        <td>17-10-2022 05:00 am</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-                                    
-                                  
-            <!--                        <td>-->
-            <!--                            ₹00.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                   
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td> 5</td>-->
-                               
-            <!--                        <td>17-10-2022 05:00 am</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-            <!--                       <td>-->
-            <!--                           ₹897,444.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                   
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    <tr>-->
-            <!--                        <td> 6</td>-->
-                                    
-            <!--                        <td>17-10-2022 05:00 am</td>-->
-            <!--                        <td> <img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Dach-Hintz</td>-->
-                                    
-            <!--                        <td>-->
-            <!--                             ₹978.00-->
-            <!--                        </td>-->
-            <!--                        <td>Cloths</td>-->
-                                   
-            <!--                        <td>-->
-            <!--                            ...-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                </table>-->
-                            
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-rose">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>{{ $customerlist ?? 0 }}</h3>
+                        <p>Registered Studio Clients</p>
+                    </div>
+                </div>
+            </div>
 
-                            <!--<div class="pagination mt-3">-->
-                            <!--    <a href="#">&laquo;</a>-->
-                            <!--    <a href="#">1</a>-->
-                            <!--    <a class="active" href="#">2</a>-->
-                            <!--    <a href="#">3</a>-->
-                            <!--    <a href="#">4</a>-->
-                            <!--    <a href="#">5</a>-->
-                            <!--    <a href="#">6</a>-->
-                            <!--    <a href="#">&raquo;</a>-->
-                            <!--</div>-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--    </div>-->
+            <div class="col-lg-4 col-md-6">
+                <div class="stat-card">
+                    <div class="stat-card-icon icon-slate">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                    <div class="stat-card-info">
+                        <h3>₹{{ number_format($partialamount ?? 0, 2) }}</h3>
+                        <p>Partial / Advance Received</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!--</div>-->
-            <!--<div class="container-fluid">-->
-            <!--    <div class="row">-->
-            <!--        <div class="col-12">-->
-            <!--            <div class="total-sales" style="text-align:left;">-->
-            <!--                <div class="d-flex flex-row justify-content-between">-->
-            <!--                    <div>-->
-            <!--                        <h6>Payments</h6>-->
-            <!--                    </div>-->
-                           
-            <!--                   <div>-->
-            <!--                    <h6 style="text-align:right; margin-right:5px;">View All <i class="fa-solid fa-angles-right"></i></h6>-->
-                                
-            <!--                   </div>-->
-                           
-            <!--            </div>-->
-            <!--                <hr>-->
-                            
-            <!--                <canvas id="myChart" style="width:100%; height: 100%;"></canvas>-->
-            <!--                <div class="d-flex flex-row" style="margin-left:40%;">-->
-            <!--                <div style="text-align:center" class="d-flex flex-row">-->
-            <!--                    <span  class="dot mt-2"></span>-->
-            <!--                    <p style="font-size:13px; font-weight:bold; "class="ml-4 mt-3">Payment Received</p>-->
-            <!--                  </div>-->
-            <!--                  <div style="text-align:center" class="d-flex flex-row ml-4">-->
-            <!--                    <span class="dot1 mt-2"></span>-->
-            <!--                    <p style="font-size:13px; font-weight:bold; "class="ml-4 mt-3">Payment Sent</p>-->
-            <!--                  </div>-->
-            <!--                  </div>-->
-            <!--        </div>-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--</div>-->
-            <!--<div class="container-fluid">-->
-            <!--    <div class="row">-->
-                    <!--<div class="col-12 col-md-6">-->
-                    <!--    <div class="total-sales">-->
-                    <!--        <div class="d-flex flex-row justify-content-between">-->
-                    <!--            <p>Stock Alert</p>-->
-                    <!--            <p>View All <i class="fa-sharp fa-solid fa-angles-right"></i></p>-->
-                    <!--        </div>-->
-                    <!--        <hr>-->
-                    <!--        <table>-->
-                    <!--            <tr>-->
-                    <!--                <th>Product</th>-->
-                    <!--                <th>Quantity</th>-->
-                    <!--                <th>Quantity Alert</th>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Sony Noise Cancelling Headphones</td>-->
-                    <!--                <td> 0 pc</td>-->
-                    <!--                <td> 10 pc</td>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Apple EarPods</td>-->
-                    <!--                <td> 11 pc</td>-->
-                    <!--                <td> 13 pc</td>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Sony ZX110NC Headphones</td>-->
-                    <!--                <td> 56 pc</td>-->
-                    <!--                <td>70 pc</td>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Zebronics Soundbar with Dolby Atmos</td>-->
-                    <!--                <td> 18 pc</td>-->
-                    <!--                <td> 38 pc</td>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Lenovo ThinkPad 13 Ultrabook</td>-->
-                    <!--                <td> 50 pc</td>-->
-                    <!--                <td> 70 pc</td>-->
-                    <!--            </tr>-->
-                    <!--            <tr>-->
-                    <!--                <td>Lenovo ThinkPad 13 Ultrabook</td>-->
-                    <!--                <td> 50 pc</td>-->
-                    <!--                <td> 70 pc</td>-->
-                    <!--            </tr>-->
-                    <!--        </table>-->
-                    <!--    </div>-->
+        <!-- Recent Transactions Card -->
+        <div class="content-box p-4 mt-2">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="font-weight-bold mb-1" style="color: #0f172a;">Recent Studio Sales Transactions</h5>
+                    <p class="text-muted mb-0" style="font-size: 13px;">Real-time invoices generated through the POS terminal</p>
+                </div>
+                <span class="badge badge-light px-3 py-2" style="border: 1px solid #e2e8f0; font-size: 12px;">
+                    {{ count($Sales) }} {{ count($Sales) === 1 ? 'Record' : 'Records' }}
+                </span>
+            </div>
 
-                    <!--</div>-->
-                    <!--<div class="col-12 col-md-12">-->
-                    <!--    <div class="total-sales">-->
-                    <!--        <div class="d-flex flex-row justify-content-between">-->
-                    <!--            <p>Top Customers</p>-->
-                    <!--            <p>View All <i class="fa-sharp fa-solid fa-angles-right" onclick="customerlist()"></i></p>-->
-                    <!--        </div>-->
-                    <!--        <hr>-->
-                            <!--<table>-->
-                            <!--    <tr>-->
-                            <!--        <th>Customer</th>-->
-                            <!--        <th>Total Amount</th>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td> ₹5,999.00-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 1-->
-                            <!--        </td>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td>₹5,626.00-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 4-->
-                            <!--        </td>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td>₹5,626.00-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 1-->
-                            <!--        </td>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td>₹9,890.30-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 2-->
-                            <!--        </td>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td>₹9,890.30-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 2-->
-                            <!--        </td>-->
-
-                            <!--    </tr>-->
-                            <!--    <tr>-->
-                            <!--        <td><img style="height:30px;width:30px; border-radius:50%; padding:2px;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />Hettinger PLC</td>-->
-                            <!--        <td>₹13,750.25-->
-                            <!--            <br>-->
-                            <!--            Total Sales : 3-->
-                            <!--        </td>-->
-                            <!--    </tr>-->
-
-                            <!--</table>-->
-                            
-                    <!--    </div>-->
-                    <!--</div>-->
-            <!--    </div>-->
-            <!--</div>-->
+            <div class="table-responsive">
+                <table id="salesTable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            <th>Date &amp; Time</th>
+                            <th>Invoice / Ref</th>
+                            <th>Customer Name</th>
+                            <th>Items</th>
+                            <th>Total Amount</th>
+                            <th class="text-center" style="width: 80px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        @foreach($Sales as $sale)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>
+                                <span class="text-muted" style="font-size: 12.5px;">
+                                    <i class="fa-regular fa-clock mr-1"></i>
+                                    {{ \Carbon\Carbon::parse($sale->created_at)->format('d M Y, h:i A') }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge" style="background: #e0e7ff; color: #3730a3; font-weight: 700; padding: 4px 8px; border-radius: 6px;">
+                                    #{{ $sale->transcationid }}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="font-weight-bold" style="color: #0f172a;">
+                                    <i class="fa-solid fa-user-circle mr-1 text-muted"></i>
+                                    {{ $sale->customerdetails->name ?? 'Walk-in Client' }}
+                                </div>
+                                <small class="text-muted">{{ $sale->customerdetails->number ?? '' }}</small>
+                            </td>
+                            <td>
+                                <span class="badge badge-secondary px-2 py-1" style="border-radius: 6px;">
+                                    {{ count($sale->purchasedetails) }} items
+                                </span>
+                            </td>
+                            <td class="font-weight-bold" style="color: #10b981; font-size: 14.5px;">
+                                ₹{{ number_format($sale->totalpurchase, 2) }}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('singletranscitiondetails', $sale->transcationid) }}" class="btn btn-sm btn-outline-primary" title="View Full Invoice" style="border-radius: 8px;">
+                                    <i class="fa-solid fa-file-invoice"></i> View
+                                </a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+
     <script>
-    $(document).ready(function () {
-    $('#salesTable').DataTable();
-});
-    
-     function customerlist(){
-          window.location.href= "{{route('customerlist')}}";
-        }
-     anychart.onDocumentReady(function () {
-
-var color1 = "darkslateblue";
-
-// Variable for controlling color enlightenment
-var colorIndex = 0;
-
-// color lightning function
-function colorizer(){
-   var mixColor1 = anychart.color.lighten(color1, colorIndex);
-   colorIndex = colorIndex + 0.2;
-   return mixColor1;
-}
-
-// data and fill color settings
-var data = [
-  {x: "2022-10-11", value: 10000, fill: (colorizer())},
-  {x: "2022-10-13", value: 12000, fill: (colorizer())},
-  {x: "2022-10-14", value: 18000, fill: (colorizer())},
-  {x: "2022-10-15", value: 13000, fill: (colorizer())},
-  {x: "2022-10-16", value: 9000, fill: (colorizer())}
-];
-
-// chart type
-var chart = anychart.column();
-
-
-
-// set data and set additional information in tooltip
-var series = chart.column(data);
-series.stroke(null);
-var tooltip = series.tooltip();
-tooltip.format(function() {
-  var mixColor2 = anychart.color.lighten(color1, (this.index * 0.2));
-  return "Input Color: " + color1 +
-    "\nLighten Ratio: " + this.index * 2 / 10 +
-    "\nResult: " + mixColor2;
-});
-
-// draw
-chart.container("container");
-chart.draw();
-});
-var xValues = [100,200,300,400,500,600,700,800,900,1000];
-
-new Chart("myChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [{ 
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
-      borderColor: "yellow",
-      fill: false
-    },  { 
-      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
-      borderColor: "darkslateblue",
-      fill: false
-    }]
-  },
-  options: {
-    legend: {display: false}
-  }
-});
+        $(document).ready(function () {
+            $('#salesTable').DataTable({
+                "pageLength": 10,
+                "order": [[0, "asc"]],
+                "language": {
+                    "search": "<i class='fa-solid fa-magnifying-glass mr-1 text-muted'></i> Search sales:",
+                    "lengthMenu": "Show _MENU_ invoices",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ transactions",
+                    "paginate": {
+                        "previous": "<i class='fa-solid fa-chevron-left'></i>",
+                        "next": "<i class='fa-solid fa-chevron-right'></i>"
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>

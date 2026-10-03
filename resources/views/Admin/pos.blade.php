@@ -1,668 +1,476 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/6b781c3f04.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
-    <link href="{{asset('css/pos.css')}}" rel="stylesheet">
-    <script src="{{asset('js/pos.js')}}"></script>
- <link rel="icon" type="image/x-icon" href="https://ssr.piniteinfosol.tk/saloon2/wp-content/uploads/2022/10/wedding__1_-removebg-preview-1.png">
-  <title>Men's Wedding Studio</title>
-  <style>
-      .btn-primary,.btn-primary:not(:disabled):not(.disabled).active, 
-    .btn-primary:not(:disabled):not(.disabled):active, 
-    .show>.btn-primary.dropdown-toggle {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Terminal | Men's Wedding Studio</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
 
-    background-color: #2e2e2e;
-    border-color: #2e2e2e;
-}
-  </style>
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
+
+    <style>
+        .pos-header-badge {
+            background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .scanner-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .bill-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        .pos-summary-table td {
+            padding: 8px 12px;
+            vertical-align: middle;
+            border: none;
+        }
+        .qty-badge {
+            background: #e0e7ff;
+            color: #3730a3;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .qty-badge:hover {
+            background: #4f46e5;
+            color: #ffffff;
+        }
+        .grand-total-display {
+            font-size: 26px;
+            font-weight: 800;
+            color: #10b981;
+            line-height: 1;
+        }
+    </style>
 </head>
-  <body>
-    <div class=" p-3">
-        <div class="pos-container">
-            <div class="d-flex flex-row">
-                <!--<i class="fa-sharp fa-solid fa-arrow-left" style="font-size:20px;"></i>-->
-                <p style="font-size:15px; font-weight: bold;" class="ml-3">POS</p>
-            </div>
-        </div>
-      
-        <div class="container-fluid" style="background-color:whitesmoke; ">
-     
-          <div class="d-flex justify-content-around my-0">
-              <div class="p-2">
-                  <div class="d-flex row">
-                      <div class="p-2">
-                          <input onkeyup="poscheck()" id="posnumber" name="posnumber" type="text" class="form-control" autofocus>
-                
-              <input type="hidden" id="randomnumber" name="randomnumber" value="{{$randomString}}">
-                      </div>
-                      <div class="p-2">
-                                            <input type="submit" class="form-control py-2" value="submit" onclick="dataentered()" >
+<body>
+    @include('Admin.sidebarmenu')
 
-                      </div>
-                  </div>
-                   
-              </div>
-
-              <div class="p-2">
-                  <form>
-                  <div class="d-flex flex-row my-2">
-                      <div class="px-2">
-                           <label style="font-size:15px;" id="name"><span style="color:red;">* </span >Customer Name</label>
-                                         
-                                         
-                      </div>
-                      <div class="px-2">
-                           <input type="text"  required id="newCustomerName" placeholder="Enter the Name" class="form-control" style=" font-size:13px;">
-                      </div>
-                      <div class="px-2">
-                           <p id="requiredName" class="required-class"></p>
-                      </div>
-                       <div class="px-2">
-                            <label  style="font-size:15px;" id="number"><span style="color:red;">* </span>Phone Number</label>
-                                         
-                                         
-                       </div>
-                       <div class="px-2">
-                            <input type="number"  required id="newCustomerPhone" placeholder="Enter the Phone Number" class="form-control" style="font-size:13px;">
-                       </div>
-                       <div class="px-2">
-                            <p id="requiredPhone" class="required-class"></p>
-                       </div>
-                  </div>
-                  </form>
-              </div>
-              <div class="p-2">
-                  <div class="d-flex flex-row my-2">
-                      <div class="px-2">
-                          <p style="font-size:14px;" >Sales Men</p>
-                         
-                          </div>
-                      <div class="px-2">
-                           <select id="salesmen" style="font-size:13px;" class="form-control">
-                @foreach($Salesmen as $men)
-                <option style="font-size:13px;" value="{{$men->id}}">{{$men->name}}</option>
-                @endforeach
-              </select>
-                      </div>
-                  </div>
-                   
-             
-              </div>
-          </div>
-           <table id="billingTable" class="table-overflow">
-              <tr>
-                <th>Sl.No</th>
-                <th>Product Name</th>
-                <th>Unit Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-                <th>Delete</th>
-              </tr>
-                   <?php  $i =1; ?>
-              @foreach($data as $info)
-             
-              <tr>
-               <td>
-                    {{$i}}</td>
-                <td>{{$info->productdetails->name}}</td>
-                @if($info->productdetails->type == 'customized')
-            <td>{{$info->price ?? ''}} <buton class="btn btn-primary btn-sm mx-2" onclick="priceadd('{{$info->id}}')"><i class="fa-sharp fa-solid fa-plus" ></i></buton></td>
-                @else
-                <td>{{$info->price}}</td>
-                @endif
-                <td onclick=quantityadd('{{$info->id}}')>{{$info->quantity ?? ''}} <buton class="btn btn-primary btn-sm mx-2" ><i class="fa-sharp fa-solid fa-plus" ></i></buton></td>
-                <td class="text-right">{{$info->price * $info->quantity}} </td>
-                
-                <td onclick="deleteproduct('{{$info->id}}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-</svg></td>
-
-              </tr>
-             <?php $i++; ?>
-              @endforeach
-            </table>
-
-          <!--<div class="row">-->
-            <!--<div class="col-12 col-md-3 mt-2">-->
-                
-            <!--</div>-->
-            <!--<div class="col-12 col-md-6 mt-5">-->
-            <!--      <div style="text-align:left;" class="my-2">-->
-            <!--                  <div class="container">-->
-            <!--                      <div class="row">-->
-                                   
-            <!--                          <div class="col-12 col-md-6">-->
-                                         
-            <!--                          </div>-->
-            <!--                          <div class="col-12 col-md-6">-->
-                                         
-            <!--                          </div>-->
-                                     
-                                     
-                                   
-                                   
-
-            <!--                      </div>-->
-                                
-                                 
-            <!--                  </div>-->
-            <!--              </div>-->
-              <!--<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong" id="customermodal">Customer Details</button>-->
-              
-            <!--</div>-->
-            
-           
-            <!-- <div class="col-12 col-md-3 mt-5">
-          <!--    <button class="btn btn-primary">Submit</button>-->
-          <!--  </div> -->
-          <!--  <form>           -->
-          <!--  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">-->
-          <!--    <div class="modal-dialog" role="document">-->
-          <!--        <div class="modal-content" style="width:60vw;">-->
-          <!--            <div class="modal-header">-->
-          <!--                <h6 class="modal-title" id="exampleModalLongTitle">Add New Customer</h6>-->
-          <!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-          <!--                    <span aria-hidden="true">&times;</span>-->
-          <!--                </button>-->
-          <!--            </div>-->
-          <!--            <div class="modal-body">-->
-                        
-
-          <!--            </div>-->
-          <!--            <div class="modal-footer">-->
-          <!--                <button type="button" style="font-size:15px;" class="btn btn-secondary" data-dismiss="modal">Ok</button>-->
-                         
-          <!--            </div>-->
-          <!--        </div>-->
-          <!--    </div>-->
-          <!--</div>-->
-          <!--</form>-->
-             
-            <!--<div class="col-12 col-md-3 mt-2">-->
-             
-            <!--</div>-->
-           
-            
-            
-            
-
-            
-                  
-
-              
-            
- <div class="d-flex justify-content-between">
-                <div class="p-2"></div>
-                <div class="p-2"></div>
-                <div class="p-2">
-                                  <table>
-                 <tr>
-                  <td>Grand Total:</td>
-                  <td><h5 id="total" value="{{$total}}" style="font-size:13px;"><span id="grandtotal">{{$total}}</span></h5></td>
-                </tr>
-                <tr>
-                  <td>Discount : </td>
-                  <td>
-                      <div class="d-flex flex-row">
-                          <div class="p-2">
-                               <input type="number" style="font-size:13px;" placeholder="Enter Discount" class="form-control" name="discount" id="discount">
-                          </div>
-                          <div class="p-2">
-                               <button type="button" class="btn btn-info" onclick="Discount()" style="background-color: #2e2e2e; border-color:#2e2e2e; color:#ffffff;height:33.49px">Submit</button></td>
-                          </div>
-                      </div> 
-                      </td>
-                 
-                 
-                </tr>
-                <tr>
-                  <td>Final Total:</td>
-                  <td><h6 id="FinalTotal"></h6></td>
-                  
-                </tr>
-                <tr>
-                  <td>Advance:</td>
-                   <td>
-                      <div class="d-flex flex-row">
-                          <div class="p-2">
-                              <input type="number" style="font-size:13px;" placeholder="Enter Partial Payment" class="form-control" name="partialpayment" id="partialpayment">
-                          </div>
-                          <div class="p-2">
-                              <button type="button" class="btn btn-primary" onclick="PartialPayment()" style="background-color: #2e2e2e; border-color:#2e2e2e; color:#ffffff;height:33.49px">Submit</button>
-                          </div>
-                      </div> 
-                      </td>
-               
-              
-
-                </tr>
-                <tr>
-                  <td>Balance:</td>
-                  <td><h6 id="Balance"></h6></td>
-                </tr>
-                
-              </table>
-
+    <div id="main">
+        <!-- Top Navigation -->
+        <div class="top-navbar">
+            <div class="d-flex align-items-center">
+                <button class="brand-toggle-btn mr-3" onclick="openNav()" title="Toggle Sidebar">
+                    <i class="fa-solid fa-bars mr-1"></i> Menu
+                </button>
+                <div class="pos-header-badge">
+                    <i class="fa-solid fa-cash-register"></i> POS TERMINAL
                 </div>
             </div>
-          <!--</div>-->
-        </div>
-        <div class="container-fluid pb-4" style="background-color:whitesmoke; ">
-          <div class="row">
-          
-           
-            <div class="col-6 mt-3"></div>
-            <div class="col-2 mt-3">
-              <select id="payment" class="form-control" name="paymentOptions">
-              <option style="font-size:13px;" value="debitCard">Debit Card</option>
-              <option style="font-size:13px;" value="creditCard">Credit Card</option>
-              <option style="font-size:13px;" value="upi">UPI</option>
-              <option style="font-size:13px;" value="cash">Cash</option>
-            </select>
+            <div class="d-flex align-items-center">
+                <a href="{{ route('Dashboard') }}" class="btn btn-sm btn-outline-secondary mr-3" style="border-radius: 8px;">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Back to Dashboard
+                </a>
+                <div class="user-profile-badge">
+                    <div class="user-avatar">
+                        {{ strtoupper(substr(Auth::user()->name ?? 'C', 0, 1)) }}
+                    </div>
+                </div>
+            </div>
         </div>
 
-            <div class="col-2 mt-3">
-              
-              <!-- <button onclick="Print('{{$randomString}}')" id="purchasebutton" class="btn btn-info">Submit</button> -->
-              <a href="{{url('printpdf')}}" id="printpdf" class="btn btn-info">View</a>
-              <button class="btn btn-info" onclick="cancelAll()">Cancel</button>
-            
+        <!-- Scanner & Customer Meta Row -->
+        <div class="scanner-card mb-4">
+            <div class="row align-items-center">
+                <!-- Barcode Scanner Input -->
+                <div class="col-lg-4 col-md-12 mb-3 mb-lg-0">
+                    <label class="font-weight-bold mb-1" style="font-size: 13px; color: #1e293b;">
+                        <i class="fa-solid fa-barcode text-primary mr-1"></i> Barcode Scanner / SKU
+                    </label>
+                    <div class="input-group">
+                        <input onkeyup="poscheck()" id="posnumber" name="posnumber" type="text" class="form-control" placeholder="Scan barcode or type SKU..." autofocus style="border-radius: 8px 0 0 8px;">
+                        <input type="hidden" id="randomnumber" name="randomnumber" value="{{ $randomString }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="dataentered()" style="background: #4f46e5; border-color: #4f46e5; border-radius: 0 8px 8px 0;">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-muted" style="font-size: 11px;">Scans automatically at 10 digits or press Enter</small>
+                </div>
+
+                <!-- Customer Details -->
+                <div class="col-lg-5 col-md-7 mb-3 mb-lg-0">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="font-weight-bold mb-1" style="font-size: 13px; color: #1e293b;">
+                                <i class="fa-solid fa-user text-muted mr-1"></i> Customer Name <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" required id="newCustomerName" placeholder="Client Name" class="form-control" style="border-radius: 8px; font-size: 13px;">
+                        </div>
+                        <div class="col-6">
+                            <label class="font-weight-bold mb-1" style="font-size: 13px; color: #1e293b;">
+                                <i class="fa-solid fa-phone text-muted mr-1"></i> Phone <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" required id="newCustomerPhone" placeholder="Mobile Number" class="form-control" style="border-radius: 8px; font-size: 13px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Associate -->
+                <div class="col-lg-3 col-md-5">
+                    <label class="font-weight-bold mb-1" style="font-size: 13px; color: #1e293b;">
+                        <i class="fa-solid fa-user-tag text-muted mr-1"></i> Sales Associate
+                    </label>
+                    <select id="salesmen" class="form-control" style="border-radius: 8px; font-size: 13px;">
+                        @foreach($Salesmen as $men)
+                        <option value="{{ $men->id }}">{{ $men->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-                    <div class="col-2 mt-3"  >
-              <button class="btn btn-success" id="purchasebutton" onclick="Print()">Pay Now</button>
+        </div>
+
+        <div class="row">
+            <!-- Left: Cart Items Table -->
+            <div class="col-lg-8 mb-4">
+                <div class="bill-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="font-weight-bold mb-0" style="color: #0f172a;">
+                            <i class="fa-solid fa-cart-shopping mr-2 text-primary"></i> Current Order Items
+                        </h5>
+                        <span class="badge badge-light px-3 py-2" style="font-size: 12px; border: 1px solid #e2e8f0;">
+                            {{ count($data) }} {{ count($data) === 1 ? 'Item' : 'Items' }}
+                        </span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="billingTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">#</th>
+                                    <th>Product Name</th>
+                                    <th>Unit Price</th>
+                                    <th>Qty</th>
+                                    <th>Subtotal</th>
+                                    <th class="text-center" style="width: 60px;">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; ?>
+                                @forelse($data as $info)
+                                <tr>
+                                    <td>{{ $i }}</td>
+                                    <td>
+                                        <div class="font-weight-bold" style="color: #1e293b;">{{ $info->productdetails->name ?? 'Custom Item' }}</div>
+                                        <small class="text-muted">{{ $info->productdetails->barcode ?? '' }}</small>
+                                    </td>
+                                    <td>
+                                        @if(($info->productdetails->type ?? '') == 'customized')
+                                        <span>₹{{ number_format($info->price, 2) }}</span>
+                                        <button class="btn btn-sm btn-outline-primary ml-1" onclick="priceadd('{{ $info->id }}')" title="Change Custom Price" style="border-radius: 4px; padding: 1px 6px;">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        @else
+                                        <span>₹{{ number_format($info->price, 2) }}</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span class="qty-badge" onclick="quantityadd('{{ $info->id }}')" title="Click to adjust quantity">
+                                            {{ $info->quantity }} <i class="fa-solid fa-plus" style="font-size: 9px;"></i>
+                                        </span>
+                                    </td>
+                                    <td class="font-weight-bold" style="color: #0f172a;">
+                                        ₹{{ number_format($info->price * $info->quantity, 2) }}
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn-action-delete" onclick="deleteproduct('{{ $info->id }}')" title="Remove item">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php $i++; ?>
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center py-5 text-muted">
+                                        <i class="fa-solid fa-basket-shopping fa-3x mb-3 text-muted" style="opacity: 0.3;"></i>
+                                        <p class="mb-0">No items added to order yet. Scan barcode or SKU to begin.</p>
+                                    </td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-      </div>
+
+            <!-- Right: Order Summary & Checkout -->
+            <div class="col-lg-4">
+                <div class="pos-summary-box mb-4">
+                    <h5 class="font-weight-bold mb-3" style="color: #0f172a;">
+                        <i class="fa-solid fa-receipt mr-2 text-primary"></i> Payment Summary
+                    </h5>
+
+                    <table class="table pos-summary-table mb-3">
+                        <tr>
+                            <td class="text-muted font-weight-bold">Grand Total:</td>
+                            <td class="text-right">
+                                <span class="grand-total-display">₹<span id="grandtotal">{{ $total }}</span></span>
+                                <input type="hidden" id="total" value="{{ $total }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted font-weight-bold">Discount (₹):</td>
+                            <td class="text-right">
+                                <div class="input-group input-group-sm ml-auto" style="max-width: 140px;">
+                                    <input type="number" id="discount" name="discount" placeholder="0" class="form-control text-right" style="border-radius: 6px 0 0 6px;">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="Discount()" style="border-radius: 0 6px 6px 0;">Apply</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted font-weight-bold">Payable Total:</td>
+                            <td class="text-right font-weight-bold" style="font-size: 16px; color: #1e1b4b;">
+                                ₹<span id="FinalTotal">{{ $total }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted font-weight-bold">Advance Payment:</td>
+                            <td class="text-right">
+                                <div class="input-group input-group-sm ml-auto" style="max-width: 140px;">
+                                    <input type="number" id="partialpayment" name="partialpayment" placeholder="0" class="form-control text-right" style="border-radius: 6px 0 0 6px;">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" onclick="PartialPayment()" style="border-radius: 0 6px 6px 0;">Apply</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-top: 1px dashed #cbd5e1;">
+                            <td class="font-weight-bold" style="color: #dc2626;">Remaining Balance:</td>
+                            <td class="text-right font-weight-bold" style="font-size: 16px; color: #dc2626;">
+                                ₹<span id="Balance">0</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form-group mb-3">
+                        <label class="font-weight-bold mb-1" style="font-size: 13px; color: #1e293b;">
+                            <i class="fa-solid fa-credit-card mr-1 text-muted"></i> Payment Method
+                        </label>
+                        <select id="payment" class="form-control" name="paymentOptions" style="border-radius: 8px;">
+                            <option value="cash">Cash Payment</option>
+                            <option value="upi">UPI / QR Code</option>
+                            <option value="debitCard">Debit Card</option>
+                            <option value="creditCard">Credit Card</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2 mt-4" style="gap: 10px;">
+                        <button class="btn btn-success btn-lg btn-block font-weight-bold shadow-sm" id="purchasebutton" onclick="Print()" style="border-radius: 10px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; padding: 12px;">
+                            <i class="fa-solid fa-check-circle mr-2"></i> Pay &amp; Generate Invoice
+                        </button>
+                        <a href="{{ url('printpdf') }}" id="printpdf" class="btn btn-info btn-lg btn-block font-weight-bold" style="display: none; border-radius: 10px;">
+                            <i class="fa-solid fa-file-pdf mr-2"></i> View / Download Invoice PDF
+                        </a>
+                        <button class="btn btn-outline-danger btn-block" onclick="cancelAll()" style="border-radius: 8px;">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Clear Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
-</html>
-<script type="text/javascript">
-  $('#printpdf').hide();
-  var myarray = [];
-  var price = [];
-  function poscheck()
-  {
-    var randomnumber = $('#randomnumber').val();
-    var posnumber = $('#posnumber').val();
-   
-    // var grandtotal = 0
-    // if(posnumber.length == 1 || posnumber.length == 2 || posnumber.length == 3)
-    // {
-    //     $('#posnumber').val('');
-    //     $.ajax({
-    //         url : 'purchasedcustomizedproduct',
-    //         type : 'GET',
-    //         data : {
-    //             'id' : posnumber,
-    //         },
-    //         dataType:'json',
-    //         success : function(data) {
-             
-    //           $( "#billingTable" ).load(window.location.href + " #billingTable" );
-    //           $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-              
-    //         },
-    //         error : function(request,error)
-    //         {
 
-    //         }
-    //     });
-    // }
-    if(posnumber.length == 10)
-    {
-      
-      $('#posnumber').val('');
-        $.ajax({
-            url : 'purchaseproduct',
-            type : 'GET',
-            data : {
-                'posnumber' : posnumber,
-                'randomnumber' : randomnumber
-            },
-            dataType:'json',
-            success : function(data) {
-              // debugger;
-              $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-              
-            // console.log(myarray)
-            // var status = myarray.includes(data.id);
-              // if(status == false)
-              // {
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
 
-              //   debugger;
-                // if(data != 0)
-                // {
-                //   if(data.type != 'customized')
-                //   {
-                //     $('#billingTable').append('<tr><td name="id">'+data.id+'</td><td>'+data.name+'</td><td>1</td><td>'+data.price+'</td><td></tr>');
-                //     $('#posnumber').val('');
-                //     window.myarray.push(data.id);
-                //     window.price.push(parseInt(data.price));
-                //     sum = price.reduce((pv, cv) => pv + cv, 0);
-                //     // window.sum = price.reduce(function(a, b){
-                //     //     return a + b;
-                //     // }, 0);
-                //     $('h5').empty('<span>'+''+'</span>');
-                //     $('h5').append('<span>'+sum+'</span>');
-                //   }else{
-                //     $('#billingTable').append('<tr><td name="id">'+data.id+'</td><td>'+data.name+'</td><td>1</td><td><input type="number" name="price"></td><td></tr>');
-                //     $('#posnumber').val('');
-                //     window.myarray.push(data.id);
-                //     window.price.push(parseInt(data.price));
-                //     sum = price.reduce((pv, cv) => pv + cv, 0);
-                //     // window.sum = price.reduce(function(a, b){
-                //     //     return a + b;
-                //     // }, 0);
-                //     $('h5').empty('<span>'+''+'</span>');
-                //     $('h5').append('<span>'+sum+'</span>');
-                // }
-                //   }
-              // }else{
-              //   $('#posnumber').val('');
-              // }               
-            },
-            error : function(request,error)
-            {
+    <script type="text/javascript">
+        $('#printpdf').hide();
 
-            }
-        });
-    }
-//   $('#posnumber').val(''); 
-  }
-  function Print()
-  {
-     
-      <?php
-        $phpVar = $total;
-        echo "var totalprice = '{$phpVar}';";
-      ?>
-
-      var salesmen = $('#salesmen').val();
-      var payment = $('#payment').val();
-      var customername = $('#newCustomerName').val();
-      var customernumber = $('#newCustomerPhone').val();
-      var total = $('#grandtotal').val();
-      var partialpayment = $('#partialpayment').val();
-      var discount = $('#discount').val();
-      var  grandtotal = document.getElementById('grandtotal').innerText;
-      if(customername != '' || customernumber != ''){
-          if(grandtotal > 0){
+        function poscheck() {
+            var randomnumber = $('#randomnumber').val();
+            var posnumber = $('#posnumber').val();
+            if(posnumber.length == 10) {
+                $('#posnumber').val('');
                 $.ajax({
-            url : 'purchaseproducts',
-            type : 'GET',
-            data : {
-                'salesmen' : salesmen,
-                'paymentmode' : payment,
-                'customername' : customername,
-                'customernumber' : customernumber,
-                'totalprice' : totalprice,
-                'partialpay' : partialpayment,
-                'discount' : discount
-            },
-            dataType:'json',
-            success : function(data) {
-          
-               window.id = data
-              $('#printpdf').show();
-              $('#purchasebutton').hide();         
-            },
-            error : function(request,error)
-            {
-
+                    url: '{{ url("purchaseproduct") }}',
+                    type: 'GET',
+                    data: {
+                        'posnumber': posnumber,
+                        'randomnumber': randomnumber
+                    },
+                    dataType: 'json',
+                    success: function() {
+                        location.reload();
+                    },
+                    error: function() {
+                        alert("Product not found or invalid barcode.");
+                    }
+                });
             }
-        }); 
-          } else{
-              alert("Please Enter Details");
-          }
-         
-           
-          
-      }
-      else{
-           alert('Please Enter Customer Details');
-      }
-
-     
-  }
-  function AddPrice(id)
-  {
-    var Price = document.getElementById(id).value;
-    // var Price = $('#pricefield').val();
-    // debugger;
-     $.ajax({
-            url : 'Addpricetoproduct',
-            type : 'GET',
-            data : {
-                'id' : id,
-                'price' : Price
-            },
-            dataType:'json',
-            success : function(data) {
-               $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-               alert('price added')        
-            //   location.reload()
-            },
-            error : function(request,error)
-            {
-
-            }
-        });
-  }
-  function PayBill() 
-  {
-    $.ajax({
-            url : 'PayBill',
-            type : 'GET',
-            data : {
-                'id' : id,
-                'price' : Price
-            },
-            dataType:'json',
-            success : function(data) {
-               $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-               
-               alert('price added')        
-            },
-            error : function(request,error)
-            {
-
-            }
-        });
-  }
-  function deleteproduct(id) {
-    $.ajax({
-            url : 'DeleteProductFromBill',
-            type : 'GET',
-            data : {
-                'id' : id
-             
-            },
-            dataType:'json',
-            success : function(data) {
-               $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-               
-               alert('Product Deleted')        
-            },
-            error : function(request,error)
-            {
-
-            }
-        });
-  }
-  $(".quantity").keyup(function(){
-  // $('.quantity').keyup(function() {
-    window.EnteredQuantity = this.value;
-    somefunction();
-  });
-  function Quantity(data) 
-  {
-    // alert('vcf')
-    window.dataid = data
-  }
-  function somefunction()
-  {
-    // alert('Total Quantity added')
-    var qunty = window.EnteredQuantity  
-    var idf = window.dataid
-    $.ajax({
-          url : 'addquantity',
-          type : 'GET',
-          data : {
-              'id' : idf,
-              'quantity' : qunty
-          },
-          dataType:'json',
-          success : function(data) {
-             // $( "#billingTable" ).load(window.location.href + " #billingTable" );
-             $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-             // urlRefresh();
-             // alert('price added')        
-          },
-          error : function(request,error)
-          {
-
-          }
-        });
-  }
-  function Discount()
-  {
-      var discount = $('#discount').val();
-      var total = document.getElementById('grandtotal').innerText;
-      var ChangeDiscount = 100 - discount;
-      var AfterDiscount = total - discount;
-      $( "#FinalTotal" ).empty();
-      $( "#FinalTotal" ).append(AfterDiscount);
-  }
-  function PartialPayment()
-  {
-    var finaltotaldata = document.getElementById('FinalTotal').innerText;   
-    var partialpayment = $('#partialpayment').val();
-    var Balance = finaltotaldata - partialpayment;
-    $( "#Balance" ).empty();
-    $( "#Balance" ).append(Balance);
-  }
-   function quantityadd(id){
-      
-        var qunty = window.prompt("Add Quantity");
-        if(qunty > 0){
-       $.ajax({
-          url : 'addquantity',
-          type : 'GET',
-          data : {
-              'id' : id,
-              'quantity' : qunty
-          },
-          dataType:'json',
-          success : function(data) {
-              $( "#billingTable" ).load(window.location.href + " #billingTable" );
-             $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-             // urlRefresh();
-             // alert('price added')        
-          },
-          error : function(request,error)
-          {
-
-          }
-        });
         }
-        else{
-            alert('Please Enter Quantity');
+
+        function dataentered() {
+            var posnumber = $('#posnumber').val();
+            if(!posnumber) {
+                alert("Please enter a SKU or Barcode");
+                return;
+            }
+            $('#posnumber').val('');
+            $.ajax({
+                url: '{{ url("purchasedcustomizedproduct") }}',
+                type: 'GET',
+                data: { 'id': posnumber },
+                dataType: 'json',
+                success: function() {
+                    location.reload();
+                },
+                error: function() {
+                    alert("Unable to find custom product.");
+                }
+            });
         }
-   }
-   function cancelAll(){
-          $.ajax({
-          url : 'cancelAll',
-          type : 'GET',
-          data : {
-          },
-          dataType:'json',
-          success : function(data) {
-              $( "#billingTable" ).load(window.location.href + " #billingTable" );
-             $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-             location.reload();
-             // urlRefresh();
-             // alert('price added')        
-          },
-          error : function(request,error)
-          {
 
-          }
-        });
-   }
-  function priceadd(id){
-      var price = window.prompt("Add Price");
-      debugger;
-      if(price > 0)
-      {
-          $.ajax({
-            url : 'Addpricetoproduct',
-            type : 'GET',
-            data : {
-                'id' : id,
-                'price' : price
-            },
-            dataType:'json',
-            success : function(data) {
-               $( "#billingTable" ).load(window.location.href + " #billingTable" );
-               $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-               alert('price added') 
-            //   var discount = $('#discount').val();
-            //   console.log(discount);
-            //   var total = document.getElementById('grandtotal').innerText;
-            //   console.log(total)
-            //   var ChangeDiscount = 100 - discount;
-            //   console.log(ChangeDiscount)
-            //   var AfterDiscount = total*ChangeDiscount/100;
-            //   console.log(AfterDiscount)
-            //   $( "#FinalTotal" ).empty();
-            //   $( "#FinalTotal" ).append(AfterDiscount);
-            //   location.reload()
-            },
-            error : function(request,error)
-            {
+        function Print() {
+            var totalprice = '{{ $total }}';
+            var salesmen = $('#salesmen').val();
+            var payment = $('#payment').val();
+            var customername = $('#newCustomerName').val();
+            var customernumber = $('#newCustomerPhone').val();
+            var partialpayment = $('#partialpayment').val() || 0;
+            var discount = $('#discount').val() || 0;
+            var grandtotal = parseFloat($('#grandtotal').text()) || 0;
 
+            if(!customername || !customernumber) {
+                alert('Please enter Customer Name and Phone Number.');
+                return;
             }
-        });
-      }
-      else{
-          alert("Please Enter Price");
-      }
-      
-  }
-  function dataentered()
-  {
-      
-      var posnumber = $('#posnumber').val();
-      
-        $('#posnumber').val('');
-        $.ajax({
-            url : 'purchasedcustomizedproduct',
-            type : 'GET',
-            data : {
-                'id' : posnumber,
-            },
-            dataType:'json',
-            success : function(data) {
-             
-              $( "#billingTable" ).load(window.location.href + " #billingTable" );
-              $( "#grandtotal" ).load(window.location.href + " #grandtotal" );
-              
-            },
-            error : function(request,error)
-            {
 
+            if(grandtotal <= 0) {
+                alert('Cart is empty. Please add products before checking out.');
+                return;
             }
-        });
-    }
-  
-</script>
+
+            $.ajax({
+                url: '{{ url("purchaseproducts") }}',
+                type: 'GET',
+                data: {
+                    'salesmen': salesmen,
+                    'paymentmode': payment,
+                    'customername': customername,
+                    'customernumber': customernumber,
+                    'totalprice': totalprice,
+                    'partialpay': partialpayment,
+                    'discount': discount
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#printpdf').show();
+                    $('#purchasebutton').hide();
+                    alert('Sale completed successfully! Invoice ready.');
+                },
+                error: function() {
+                    alert('Error saving transaction. Please verify data.');
+                }
+            });
+        }
+
+        function quantityadd(id) {
+            var qunty = window.prompt("Enter new quantity:");
+            if(qunty && qunty > 0) {
+                $.ajax({
+                    url: '{{ url("addquantity") }}',
+                    type: 'GET',
+                    data: {
+                        'id': id,
+                        'quantity': qunty
+                    },
+                    dataType: 'json',
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function priceadd(id) {
+            var price = window.prompt("Enter new price (₹):");
+            if(price && price > 0) {
+                $.ajax({
+                    url: '{{ url("Addpricetoproduct") }}',
+                    type: 'GET',
+                    data: {
+                        'id': id,
+                        'price': price
+                    },
+                    dataType: 'json',
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function deleteproduct(id) {
+            if(confirm("Remove this item from the cart?")) {
+                $.ajax({
+                    url: '{{ url("DeleteProductFromBill") }}',
+                    type: 'GET',
+                    data: { 'id': id },
+                    dataType: 'json',
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function cancelAll() {
+            if(confirm("Are you sure you want to clear the entire cart?")) {
+                $.ajax({
+                    url: '{{ url("cancelAll") }}',
+                    type: 'GET',
+                    data: {},
+                    dataType: 'json',
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function Discount() {
+            var discount = parseFloat($('#discount').val()) || 0;
+            var total = parseFloat($('#grandtotal').text()) || 0;
+            var afterDiscount = Math.max(0, total - discount);
+            $('#FinalTotal').text(afterDiscount.toFixed(2));
+            PartialPayment();
+        }
+
+        function PartialPayment() {
+            var finalTotal = parseFloat($('#FinalTotal').text()) || 0;
+            var partial = parseFloat($('#partialpayment').val()) || 0;
+            var balance = Math.max(0, finalTotal - partial);
+            $('#Balance').text(balance.toFixed(2));
+        }
+    </script>
+</body>
+</html>
