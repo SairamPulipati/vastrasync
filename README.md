@@ -1,4 +1,4 @@
-# Wedding Studio — Enterprise Billing & POS Management System
+# VastraSync — Ethnic Wear Manufacturing, Inventory & Retail POS ERP
 
 [![Laravel](https://img.shields.io/badge/Laravel-10.x%20LTS-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net)
@@ -11,7 +11,9 @@
 
 ## 📌 Overview
 
-**Wedding Studio** is a comprehensive, production-grade Point of Sale (POS), Inventory, and Studio Management ERP application developed with **Laravel 10** and **PHP 8.2**. Designed specifically for high-end wedding photography studios, print labs, frame manufacturers, and cinematic media production houses, the platform streamlines multi-branch operations, service package billing, physical merchandise stock, barcode processing, and financial accounting.
+**VastraSync** is an enterprise-grade ERP, Multi-Branch Inventory Management, and Point of Sale (POS) system engineered with **Laravel 10 LTS** and **PHP 8.2**. Designed specifically for high-end ethnic wear fashion houses, bridal & groom apparel manufacturing units, multi-branch designer showrooms, and custom tailoring boutiques.
+
+The platform unifies the end-to-end apparel lifecycle: from raw fabric procurement and batch manufacturing to Code-128 barcode tagging, multi-branch stock transfers, tailor alteration advances, high-speed POS checkout, and GST-compliant thermal/A4 billing.
 
 Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/pulipati-sairam-b14820169/)**.
 
@@ -22,10 +24,10 @@ Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/puli
 ### 1. Modern Luxury Authentication & Role Access
 ![Login Screen](screenshots/01-login-screen.png)
 
-### 2. Studio Overview & Financial Analytics Dashboard
+### 2. Showroom Overview & Financial Analytics Dashboard
 ![Dashboard Overview](screenshots/02-dashboard-overview.png)
 
-### 3. Real-Time POS Billing & Barcode Terminal
+### 3. High-Speed POS Billing & Barcode Terminal
 ![POS Billing Terminal](screenshots/03-pos-billing-terminal.png)
 
 ### 4. Multi-Branch Staff Management & Role-Based Access Control (RBAC)
@@ -35,30 +37,30 @@ Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/puli
 
 ## ✨ Key Features & Capabilities
 
-### 🛒 1. Point of Sale (POS) & Billing Terminal
-- **Fast Barcode Item Lookup**: Direct scanning and barcode matching for rapid client checkout.
-- **Dynamic Cart Management**: Real-time quantity adjustments, price overrides, and subtotal/tax computing.
-- **Customized Package Support**: Seamlessly combines physical products (e.g., HD Albums, Canvas Frames) and service packages (e.g., 2-Day Pre-Wedding Shoots, 4K Drone Cinematic Films).
-- **Flexible Settlement**: Supports Full Payment, Partial Advances, and Secondary Settlement collections with automatic balance tracking.
+### 🛒 1. Point of Sale (POS) & Retail Showroom Checkout
+- **Instant Barcode / SKU Scanning**: Real-time barcode lookup optimized for handheld laser scanners at retail counters.
+- **Dynamic Cart Management**: Live item pricing, quantity adjustments, order line subtotals, and automatic tax computation.
+- **Customized Garment & Tailoring Support**: Accommodates ready-to-wear apparel (Sherwanis, Kurtas, Indo-Western sets) and bespoke tailoring orders.
+- **Flexible Settlement Engine**: Supports 100% Cash/Card settlement, partial advance bookings for fitting trials, and secondary balance collections.
 
 ### 🏢 2. Multi-Branch & Warehouse Inventory
-- **Multi-Branch Operations**: Isolate or aggregate sales, staff, and stock per branch (e.g., Hyderabad HQ, Vijayawada, Visakhapatnam).
-- **Stock Depletion & Low-Stock Alerts**: Automatic decrement of inventory upon sale completion and threshold warnings.
-- **Multi-Branch Allocation**: Distribute products to single or multiple branch showrooms simultaneously.
+- **Multi-Showroom Federation**: Partition or aggregate catalog stock across multiple flagship branches (e.g., Hyderabad Flagship HQ, Vijayawada Showroom).
+- **Stock Depletion & Low-Stock Alerts**: Real-time decrement of showroom stock upon invoice generation with minimum threshold alarms.
+- **Multi-Branch Stock Allocation**: Allocate production batches across warehouse hubs and retail branches simultaneously.
 
-### 🏷️ 3. Barcode & PDF Invoicing Engine
-- **Automated Barcode Generation**: Generates standard Code-128 barcodes for all catalogued inventory.
-- **Bulk Barcode Sheets**: Export and print batch sheets for physical label affixing.
+### 🏷️ 3. Barcode & GST-Compliant Invoicing Engine
+- **Automated Code-128 Barcoding**: Dynamic barcode generation for every apparel SKU, garment size, and color variant.
+- **Batch Barcode Sheet Printing**: High-density PDF barcode sheets ready for standard sticker rolls and hangtag printers.
 - **Thermal & A4 Invoices**: PDF generation using `barryvdh/laravel-dompdf` for printable customer tax receipts and delivery bills.
 
-### 📦 4. Procurement & Supplier Accounting
-- **Supplier Registry**: Manage vendor contacts, procurement ledgers, and invoice records.
-- **Admin Purchase Tracking**: Track raw materials procurement (velvet sheets, acrylic mounts, outdoor lighting equipment, strobes).
+### 📦 4. Fabric Procurement & Supplier Accounting
+- **Vendor & Weaver Directory**: Track textile mills, embroidery artisans, and raw material suppliers.
+- **Raw Material Procurement**: Record batch purchases of fabrics (silk, brocade, velvet), lining materials, buttons, and accessories.
 
 ### 👥 5. Role-Based Access Control (RBAC)
-- **Role 1 (Super Admin)**: Complete system control, analytics across all branches, branch creation, and global configuration.
-- **Role 2 (Branch Manager)**: Local inventory oversight, staff tracking, branch sales, and invoicing.
-- **Role 5 (Sales Executive)**: POS terminal operation, order creation, and customer checkouts.
+- **Role 1 (Super Admin)**: Complete system control, cross-branch financial reports, branch creation, and audit logging.
+- **Role 2 (Showroom Manager)**: Local inventory oversight, sales monitoring, branch staff administration, and expense audits.
+- **Role 5 (Sales Associate / Cashier)**: Fast POS billing, customer registry, barcode scanning, and receipt dispatch.
 
 ---
 

@@ -5,11 +5,11 @@
         </button>
         <div>
             <h5 class="mb-0 font-weight-bold" style="color: #1e1b4b; font-size: 16px; letter-spacing: -0.3px;">
-                @yield('page_title', 'Men\'s Wedding Studio')
+                @yield('page_title', 'VastraSync ERP | Luxury Ethnic Wear & POS')
             </h5>
             <small class="text-muted" style="font-size: 11.5px;">
                 <i class="fa-solid fa-location-dot mr-1 text-primary"></i> 
-                {{ Auth::user()->BranchData->name ?? 'Main Studio Branch' }}
+                {{ Auth::user()->BranchData->name ?? 'Main Showroom & Studio' }}
             </small>
         </div>
     </div>

@@ -23,7 +23,7 @@
  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
-    <title>Products Catalog | Men's Wedding Studio</title>
+    <title>Garment Catalog &amp; Inventory | VastraSync ERP</title>
 
 </head>
 
@@ -38,15 +38,15 @@
 @endif
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Product Catalog &amp; Inventory</h4>
-                <p class="text-muted mb-0" style="font-size: 13.5px;">Manage ready-made studio products, frames, barcode labels, and pricing.</p>
+                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Ethnic Wear Catalog &amp; Showroom Stock</h4>
+                <p class="text-muted mb-0" style="font-size: 13.5px;">Manage ready-made outfits, sherwanis, kurtas, barcode labels, and pricing.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex" style="gap: 10px;">
                 <a href="{{route('downloadallbarcodes')}}" class="btn btn-outline-primary" style="border-radius: 8px; font-weight: 600; font-size: 13px; text-decoration: none !important;">
                     <i class="fa-solid fa-download mr-1"></i> Barcode Download
                 </a>
                 <button type="button" class="btn-modern-primary" uk-toggle="target: #offcanvas-flip">
-                    <i class="fa-solid fa-plus mr-1"></i> Add New Product
+                    <i class="fa-solid fa-plus mr-1"></i> Add New Garment
                 </button>
             </div>
         </div>

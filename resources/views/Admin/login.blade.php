@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — Wedding Studio POS &amp; Billing Management</title>
+    <title>Login — VastraSync ERP | Ethnic Wear Manufacturing &amp; Retail POS</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -161,31 +161,31 @@
             <!-- Left Branding Panel -->
             <div class="col-lg-5 brand-panel d-none d-lg-flex">
                 <div>
-                    <img src="{{ asset('images/logo.svg') }}" alt="Wedding Studio" class="logo-img mb-4">
+                    <img src="{{ asset('images/logo.svg') }}" alt="VastraSync ERP" class="logo-img mb-4">
                     <h3 class="font-weight-bold" style="font-size: 26px; line-height: 1.3;">
-                        Enterprise Studio Management &amp; POS
+                        Ethnic Wear ERP &amp; Retail POS
                     </h3>
                     <p class="text-white-50 mt-2" style="font-size: 14px;">
-                        Integrated billing, multi-branch inventory, barcode management, and customer ledger for modern wedding studios.
+                        Integrated garment production, multi-branch ethnic inventory, barcode tags, alteration advances, and POS retail billing.
                     </p>
                 </div>
 
                 <div class="mt-4">
                     <div class="feature-item">
                         <i class="fa-solid fa-cash-register"></i>
-                        <span>Point of Sale checkout &amp; split settlements</span>
+                        <span>High-speed POS checkout &amp; split payment advances</span>
                     </div>
                     <div class="feature-item">
                         <i class="fa-solid fa-boxes-stacked"></i>
-                        <span>Multi-branch warehouse &amp; stock alert engine</span>
+                        <span>Garment catalog, raw materials &amp; fabric inventory</span>
                     </div>
                     <div class="feature-item">
                         <i class="fa-solid fa-barcode"></i>
-                        <span>Automated Code-128 barcode generation</span>
+                        <span>Code-128 barcode tags &amp; alteration tracking</span>
                     </div>
                     <div class="feature-item">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
-                        <span>Thermal &amp; A4 custom PDF tax receipts</span>
+                        <span>GST-compliant thermal slips &amp; A4 designer invoices</span>
                     </div>
                 </div>
 
@@ -199,11 +199,11 @@
             <!-- Right Login Form Panel -->
             <div class="col-lg-7 form-panel">
                 <div class="d-lg-none text-center mb-4">
-                    <img src="{{ asset('images/logo.svg') }}" alt="Wedding Studio" style="max-width: 200px;">
+                    <img src="{{ asset('images/logo.svg') }}" alt="VastraSync ERP" style="max-width: 200px;">
                 </div>
 
                 <h2 class="font-weight-bold text-dark mb-1" style="font-size: 24px;">Welcome back</h2>
-                <p class="text-muted mb-4" style="font-size: 14px;">Please enter your credentials to access your studio workspace.</p>
+                <p class="text-muted mb-4" style="font-size: 14px;">Please enter your credentials to access your showroom workspace.</p>
 
                 @if ($errors->any())
                     <div class="alert alert-danger py-2 px-3 mb-4" style="font-size: 13px; border-radius: 8px;">

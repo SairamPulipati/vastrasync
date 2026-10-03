@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Dashboard | Men's Wedding Studio</title>
+    <title>Showroom Dashboard | VastraSync ERP</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
 
     <!-- CSS Libraries -->
@@ -21,8 +21,8 @@
         <!-- Welcome Banner -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
             <div>
-                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Studio Overview</h4>
-                <p class="text-muted mb-0" style="font-size: 13.5px;">Live operations, sales metrics, and recent billing activity.</p>
+                <h4 class="font-weight-bold mb-1" style="color: #0f172a;">Showroom &amp; Production Overview</h4>
+                <p class="text-muted mb-0" style="font-size: 13.5px;">Live multi-branch inventory, daily retail billing, and order collections.</p>
             </div>
             <div class="mt-3 mt-md-0 d-flex" style="gap: 10px;">
                 <a href="{{ route('pos') }}" class="btn-modern-primary">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="stat-card-info">
                         <h3>{{ $product ?? 0 }}</h3>
-                        <p>Active Studio Outfits & Items</p>
+                        <p>Active Ethnic Outfits &amp; Garments</p>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="stat-card-info">
                         <h3>{{ $customerlist ?? 0 }}</h3>
-                        <p>Registered Studio Clients</p>
+                        <p>Registered Showroom Clients</p>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="stat-card-info">
                         <h3>₹{{ number_format($partialamount ?? 0, 2) }}</h3>
-                        <p>Partial / Advance Received</p>
+                        <p>Alteration &amp; Order Advances</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
         <div class="content-box p-4 mt-2">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
-                    <h5 class="font-weight-bold mb-1" style="color: #0f172a;">Recent Studio Sales Transactions</h5>
+                    <h5 class="font-weight-bold mb-1" style="color: #0f172a;">Recent Showroom Sales Transactions</h5>
                     <p class="text-muted mb-0" style="font-size: 13px;">Real-time invoices generated through the POS terminal</p>
                 </div>
                 <span class="badge badge-light px-3 py-2" style="border: 1px solid #e2e8f0; font-size: 12px;">
