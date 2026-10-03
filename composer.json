@@ -1,9 +1,9 @@
 {
-    "name": "sairampulipati/weddingstudio",
+    "name": "sairampulipati/vastrasync-erp",
     "type": "project",
-    "description": "Enterprise Wedding Studio POS & Billing Management System built with Laravel.",
-    "keywords": ["laravel", "billing", "pos", "wedding-studio", "point-of-sale", "invoicing"],
-    "license": "MIT",
+    "description": "VastraSync — Ethnic Wear Manufacturing, Multi-Branch Inventory & Retail POS ERP built with Laravel 10 LTS.",
+    "keywords": ["laravel", "erp", "pos", "retail", "ethnic-wear", "inventory", "invoicing", "barcodes"],
+    "license": "proprietary",
     "require": {
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^2.0.8",

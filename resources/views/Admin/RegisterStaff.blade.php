@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="font-weight-bold" style="font-size: 13px;">Email Address <span class="text-danger">*</span></label>
-                                    <input type="email" name="email" required placeholder="e.g. ramesh@weddingstudio.com" class="form-control">
+                                    <input type="email" name="email" required placeholder="e.g. ramesh@vastrasync.com" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="font-weight-bold" style="font-size: 13px;">Phone Number <span class="text-danger">*</span></label>
