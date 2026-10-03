@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SuppilerDetails extends Model
 {
     use HasFactory;
+
     protected $table = 'suppliers';
+
+    protected $fillable = [
+        'name',
+        'number',
+        'isactive',
+    ];
 }

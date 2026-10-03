@@ -1,0 +1,3 @@
+@echo off
+echo Starting Wedding Studio POS & Billing Server on http://127.0.0.1:8000 ...
+"C:\Users\PulipatiSairam\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.2_Microsoft.Winget.Source_8wekyb3d8bbwe\php.exe" "%~dp0artisan" serve --port=8000

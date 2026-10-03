@@ -21,6 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'mobile',
+        'address',
+        'role',
+        'branch',
+        'isactive',
     ];
 
     /**
@@ -40,9 +45,27 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'isactive' => 'integer',
+        'role' => 'integer',
     ];
+
     public function BranchData()
     {
-        return $this->hasone(Branch::class, 'id', 'branch');
+        return $this->hasOne(Branch::class, 'id', 'branch');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 1;
+    }
+
+    public function isManager()
+    {
+        return $this->role === 2;
+    }
+
+    public function isSalesman()
+    {
+        return $this->role === 5;
     }
 }

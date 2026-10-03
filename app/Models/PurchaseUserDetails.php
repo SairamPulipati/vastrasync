@@ -8,9 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseUserDetails extends Model
 {
     use HasFactory;
+
     protected $table = 'purchaseuserdetails';
+
+    protected $fillable = [
+        'purchaseid',
+        'name',
+        'branch',
+        'number',
+    ];
+
     public function transcationid()
     {
-        return $this->hasone(Purchase::class, 'id', 'purchaseid');
+        return $this->hasOne(Purchase::class, 'id', 'purchaseid');
     }
 }
