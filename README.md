@@ -22,16 +22,16 @@ Developed and maintained by **[Sairam Pulipati](https://www.linkedin.com/in/puli
 ## 📸 Application Showcase
 
 ### 1. Modern Luxury Authentication & Role Access
-![Login Screen](screenshots/01-login-screen.png?raw=true&v=2)
+![Login Screen](screenshots/01-login-screen.png)
 
 ### 2. Showroom Overview & Financial Analytics Dashboard
-![Dashboard Overview](screenshots/02-dashboard-overview.png?raw=true&v=2)
+![Dashboard Overview](screenshots/02-dashboard-overview.png)
 
 ### 3. High-Speed POS Billing & Barcode Terminal
-![POS Billing Terminal](screenshots/03-pos-billing-terminal.png?raw=true&v=2)
+![POS Billing Terminal](screenshots/03-pos-billing-terminal.png)
 
 ### 4. Multi-Branch Staff Management & Role-Based Access Control (RBAC)
-![Staff Management & RBAC](screenshots/04-staff-management-rbac.png?raw=true&v=2)
+![Staff Management & RBAC](screenshots/04-staff-management-rbac.png)
 
 ---
 
